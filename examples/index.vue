@@ -1,6 +1,7 @@
 <template>
 <div>
     <h1>index.vue</h1>
+    <vue-Test></vue-Test>
 </div>
 </template>
     

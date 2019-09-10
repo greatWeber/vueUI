@@ -10,7 +10,7 @@ const router = new Router({
         {
             path:'/',
             name:'index',
-            component: ()=>import('../index.vue')
+            component: ()=>import('@ex/index.vue')
         } 
     ]
 });
