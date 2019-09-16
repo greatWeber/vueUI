@@ -1,0 +1,121 @@
+.vueUI-button {
+    text-align: center;
+    line-height: 1;
+    background: #fff;
+    color: #666;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    cursor: pointer; 
+    outline: none;
+    -webkit-tap-highlight-color: transparent; //去掉移动端点击高亮
+
+    &.is-loading {
+        opacity: 0.8;
+    }
+}
+
+.vueUI-button--mini {
+    padding: 0.15rem 0.35rem;
+
+    &.is-round {
+        border-radius: 0.3rem;
+    }
+}
+
+.vueUI-button--small {
+    width: 45vw;
+    height: 0.68rem;
+
+    &.is-round {
+        border-radius: 0.34rem;
+    }
+}
+
+.vueUI-button--medium {
+    width: 80vw;
+    height: 0.98rem;
+    border-radius: 6px;
+    font-size: 16px;
+    &.is-round {
+        border-radius: 0.49rem;
+    }
+}
+
+.vueUI-button--primary {
+    color: #fff;
+    background: #409eff;
+    border-color:#409eff;
+    &.is-plain {
+        color: #409eff;
+        background: #ecf5ff;
+        border-color: #b3d8ff;
+    }
+}
+
+.vueUI-button--success {
+    color: #fff;
+    background: #67c23a;
+    border-color:#67c23a;
+
+    &.is-plain {
+        color: #67c23a;
+        background: #f0f9eb;
+        border-color: #c2e7b0;
+    }
+}
+
+.vueUI-button--info {
+    color: #fff;
+    background: #909399;
+    border-color:#909399;
+
+    &.is-plain {
+        color: #909399;
+        background: #f4f4f5;
+        border-color: #d3d4d6;
+    }
+}
+
+.vueUI-button--warning {
+    color: #fff;
+    background: #e6a23c;
+    border-color:#e6a23c;
+
+    &.is-plain {
+        color: #e6a23c;
+        background: #fdf6ec;
+        border-color: #f5dab1;
+    }
+}
+
+.vueUI-button--danger {
+    color: #fff;
+    background: #f56c6c;
+    border-color:#f56c6c;
+
+    &.is-plain {
+        color: #f56c6c;
+        background: #fef0f0;
+        border-color: #fbc4c4;
+    }
+}
+
+.vueUI-icon--loading { 
+    display: inline-block;
+    animation: rotating 2s linear infinite;
+}
+
+// animation
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    
+    }
+
+    100% {
+        transform: rotate(1turn);
+
+    }
+}
