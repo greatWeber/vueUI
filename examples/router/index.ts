@@ -16,7 +16,12 @@ const router = new Router({
             path:'/button',
             name:'button',
             component: ()=>import('@ex/views/button.vue')
-        } 
+        },
+        {
+            path:'/picker',
+            name:'picker',
+            component: ()=>import('@ex/views/picker.vue')
+        }
     ]
 });
 

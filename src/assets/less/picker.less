@@ -1,0 +1,75 @@
+// picker 选择器
+
+.vueUI-picker--mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2900;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+
+}
+
+.vueUI-picker-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3000;
+    width: 100vw;
+    height: 50vh;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.vueUI-picker-header {
+    padding: 0 0.2rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.26rem;
+    color: #666;
+    border-bottom: 0.01rem solid #eee;
+}
+
+.vueUI-picker-content {
+    padding: 0.6rem;
+}
+
+.vueUI-picker-group {
+    height: 5rem;
+    overflow: hidden;
+    position: relative;
+    &::before {
+        content:'';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(255,255,255,0.5);
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+        height: 2rem;
+
+    }
+
+    &::after {
+        content:'';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.5);
+        border-top: 1px solid #ccc;
+        width: 100%;
+        height: 2rem;
+    }
+
+    .group-wrapper {
+        width: 100%;
+    }
+}
+
+.vueUI-picker-unit {
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+}

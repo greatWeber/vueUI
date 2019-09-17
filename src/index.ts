@@ -4,11 +4,13 @@ import '@/assets/less/index.less';
 import {remDesign} from '@/libs/rem';
 
 import button from './components/button/index.vue';
+import picker from './components/picker/index.vue';
 
 remDesign();
 
 const components = [
-    button
+    button,
+    picker
 ];
 
 
