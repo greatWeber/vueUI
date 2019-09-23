@@ -82,13 +82,13 @@ export default class Touchs  {
     }
 
     private binds(obj,fn){
-        return (e)=>{
+        return function(e){
             // console.log('arg',e); 
             arguments[0] = e;
             fn.apply(obj, arguments);
         }
     }
-
+ 
     private touchStart(){
         // touchstart:
         // 1. 给target绑定touch事件

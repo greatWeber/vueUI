@@ -1,9 +1,15 @@
 <template>
-<div class="vueUI-picker">
-    <slot></slot>
-    <div class="vueUI-picker--mask"></div>
-    <select-picker></select-picker>
-</div>
+<section class="vueUI-picker">
+    <div @click="showMask=true;">
+        <slot></slot>
+    </div>
+    <transition name="fade">
+        <div class="vueUI-picker--mask" v-show="showMask" @click="showMask=false;"></div>
+    </transition>
+    <transition name="slice-bottom">
+        <select-picker v-show="showMask" :show.sync="showMask" v-on="$listeners"></select-picker>
+    </transition>
+</section>
 </template>
     
 <script lang="ts">

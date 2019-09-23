@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vueUI-picker></vueUI-picker>
+    <vueUI-picker @success="successCb">点击打开选择器</vueUI-picker>
 </div>
 </template>
     
@@ -10,6 +10,9 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Picker extends Vue {
 
+    successCb(data){
+        console.log(data);
+    }
 }
 </script>
     

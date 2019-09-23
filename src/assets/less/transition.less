@@ -1,0 +1,19 @@
+// transition 动画效果
+
+// 淡入淡出效果
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.slice-bottom-enter-active, .slice-bottom-leave-active {
+    transform: translateY(0);
+    transition: 0.5s transform linear;
+}
+
+.slice-bottom-enter, .slice-bottom-leave-to {
+    
+    transform: translateY(100vh);
+}
