@@ -6,14 +6,16 @@
     </header>
     <section class="vueUI-picker-content flex" ref="content">
         <div class="vueUI-picker-group flex-item" >
-            <ul class="group-wrapper">
-                <li 
-                v-for="(item,i) in pickerArray"
-                :key="i"
-                class="vueUI-picker-unit"
-                >
-                {{rangeKey?item[rangeKey]:item}}
-                </li>
+            <ul class="group-wrapper" v-for="(picker,p) in pickerArray" :key="p">
+                <template v-if="p<3">
+                    <li 
+                    v-for="(item,i) in picker"
+                    :key="i"
+                    class="vueUI-picker-unit"
+                    >
+                    {{rangeKey?item[rangeKey]:item}}
+                    </li>
+                </template>
                 
             </ul>
         </div>
@@ -33,23 +35,37 @@ export default class SelectorPicker extends Vue {
     @Prop({type:Array,default:[]}) readonly pickerArray;
     @Prop(String) readonly rangeKey; //当传入对象数组的时候，需要指定key值
    
-    private len:number = 0;
+    private lens:Array<number> = [];
 
     private touch:Touch;
     private unitHeight: number; //格子的高度
-    private unitIndex: number = 3; //记录当前的数组索引
-    private lastY:number = 0; //记录上一次停止的位置
+    private unitIndexs: Array<number> = []; //记录当前的数组索引
+    private lastYs:Array<number> = []; //记录上一次停止的位置
 
     // computed
     
     @Watch('show')
-    showhandler(val:boolean,oldVal:boolean){
+    showHandler(val:boolean,oldVal:boolean){
         // 由于在display:none的状态下，是获取不到元素的高度的，所以要监听show属性
         if(this.show&&!this.unitHeight){
         
             let $content = this.$refs.content;
             let $groups = ($content as any).querySelectorAll('.vueUI-picker-group');
             this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
+        }
+    }
+
+    @Watch('pickerArray')
+    pickerHandler(val:boolean,oldVal:boolean){
+        if(val){
+            this.lens = [];
+            this.unitIndexs = [];
+            this.lastYs = [];
+            this.pickerArray.forEach(picker=>{
+                this.lens.push(picker.length);
+                this.unitIndexs.push(3);//默认是3
+                this.lastYs.push(0); //默认距离是0
+            })
         }
     }
     
@@ -64,17 +80,17 @@ export default class SelectorPicker extends Vue {
                 startCb: (e:any)=>{this.startCb(group)},
                 moveCb: (e:any,range:number)=>{
                     
-                    this.moveCb($groupWarpper,range)
+                    this.moveCb($groupWarpper,range,i)
                     },
                 endCb: (e:any,range:number)=>{
                     
-                    this.endCb($groupWarpper,range)
+                    this.endCb($groupWarpper,range,i)
                     },
             })
         });
         // this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
  
-        this.len = this.pickerArray.length;
+        // this.len = this.pickerArray.length;
 
     }
 
@@ -82,46 +98,46 @@ export default class SelectorPicker extends Vue {
 
     }
 
-    private moveCb(target:any,range:number):void {
+    private moveCb(target:any,range:number,index:number):void {
         // console.log(range);
         
         utils.setCss(target,{
-            'transform':`translateY(${this.lastY+range}px)`
+            'transform':`translateY(${this.lastYs[index]+range}px)`
         });
     }
 
-    private endCb(target:any,endY:number):void {
+    private endCb(target:any,endY:number,index:number):void {
         /**
          * todo:
          * 1. 判断最后落在哪个格子上
          * 2. 安全范围判断，头部不能超过(2*height);尾部不能超过-(count-3*height);
          * 3. 记得当前格子对应的数据索引，由于一列有5个格子，从0开始算，中间是2
          */
-        this.lastY += endY;
+        this.lastYs[index] += endY;
 
-        let min = this.lastY >0?Math.floor(this.lastY / this.unitHeight): Math.ceil(this.lastY/this.unitHeight);
-        let max = this.lastY >0?min+1:min-1;
+        let min = this.lastYs[index] >0?Math.floor(this.lastYs[index] / this.unitHeight): Math.ceil(this.lastYs[index]/this.unitHeight);
+        let max = this.lastYs[index] >0?min+1:min-1;
         let middleHeight = (min+max)/2*this.unitHeight;
         let current = 0;
 
         console.log(min,max,this.unitHeight,middleHeight);
-        console.log(Math.abs(this.lastY))
+        console.log(Math.abs(this.lastYs[index]))
         // 判断落在哪个格子上
-        if(Math.abs(this.lastY)>=Math.abs(middleHeight)){
+        if(Math.abs(this.lastYs[index])>=Math.abs(middleHeight)){
             current = max;
         }else{
             current = min;
         }
         // 安全判断
-        if(this.lastY>2*this.unitHeight){
-            this.lastY = 2*this.unitHeight;
+        if(this.lastYs[index]>2*this.unitHeight){
+            this.lastYs[index] = 2*this.unitHeight;
             current = 2;
-        }else if(Math.abs(this.lastY)>Math.abs((this.len-3)*this.unitHeight)){
-            this.lastY = -(this.len-3)*this.unitHeight;
-            current = -(this.len-3);
+        }else if(Math.abs(this.lastYs[index])>Math.abs((this.lens[index]-3)*this.unitHeight)){
+            this.lastYs[index] = -(this.lens[index]-3)*this.unitHeight;
+            current = -(this.lens[index]-3);
         }
         let offsetY = current* this.unitHeight;
-        this.unitIndex = 2 - current;
+        this.unitIndexs[index] = 2 - current;
         console.log(current,offsetY)
         utils.setCss(target,{
             'transform':`translateY(${offsetY}px)`
@@ -134,7 +150,11 @@ export default class SelectorPicker extends Vue {
 
     private sureHandler():void {
         this.$emit('update:show',false);
-        this.$emit('success',this.pickerArray[this.unitIndex]);
+        let value = [];  
+        this.pickerArray.forEach((picker,i)=>{
+            value.push(picker[this.unitIndexs[i]])
+        })
+        this.$emit('success',value);
     }
 
 
