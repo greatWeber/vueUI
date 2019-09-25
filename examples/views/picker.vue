@@ -6,6 +6,12 @@
     <p>
         <vueUI-picker :data="data2" range-key="text" @success="successCb">对象数组选择器</vueUI-picker>
     </p>
+    <p>
+        <vueUI-picker mode="multiSelector" :data="data3"  @success="successCb">多列数组选择器</vueUI-picker>
+    </p>
+    <p>
+        <vueUI-picker mode="region"  @success="successCb">地址选择器</vueUI-picker>
+    </p>
 </div>
 </template>
     
@@ -15,14 +21,18 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Picker extends Vue {
 
-    private data1: Array<any> = ['红','蓝','绿','紫','白','黑'];
+    private data1: Array<any> = ['红','蓝'];
     private data2:Array<any> = [
         {text:'html',value:1},
-        {text:'css',value:2},
+        {text:'css',value:2}, 
         {text:'js',value:3},
         {text:'vue',value:4},
         {text:'mpvue',value:5},
-    ]
+    ];
+    private data3:Array<any> = [
+        ['js','vue','ts'],
+        ['html','css','less']
+    ];
 
     successCb(data){
         console.log(data);

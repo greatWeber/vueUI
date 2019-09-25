@@ -13,7 +13,7 @@
                     :key="i"
                     class="vueUI-picker-unit"
                     >
-                    {{rangeKey?item[rangeKey]:item}}
+                    {{item.text}}
                     </li>
                 </template>
                 
@@ -28,13 +28,14 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Touch from './touch';
 import utils from '@/libs/utils';
+import reginJson from '@/libs/map';
 @Component
 export default class SelectorPicker extends Vue {
 
     @Prop(Boolean) readonly show;
-    @Prop({type:Array,default:[]}) readonly pickerArray;
-    @Prop(String) readonly rangeKey; //当传入对象数组的时候，需要指定key值
+
    
+   private pickerArray: Array<any> = [];
     private lens:Array<number> = [];
 
     private touch:Touch;
@@ -52,47 +53,78 @@ export default class SelectorPicker extends Vue {
             let $content = this.$refs.content;
             let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
             this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
-            this.initData();
-            this.lens.forEach((len,i)=>{
-                if(len<3){
-                    utils.setCss($groups[i],{
-                        'transform':`translateY(${this.lastYs[i]}px)`
-                    })
-                }
+            this.lastYs = [0,2*this.unitHeight,2*this.unitHeight];
+            utils.setCss($groups[1],{
+                'transform':`translateY(${this.lastYs[1]}px)`
+            });
+            utils.setCss($groups[2],{
+                'transform':`translateY(${this.lastYs[2]}px)`
             })
+            
         }
     }
 
-    @Watch('pickerArray')
-    pickerHandler(val:boolean,oldVal:boolean){
-        if(val){
-            this.initData();
-        }
-    }
+    
 
-    initData():void {
+    private initData():void {
         // 初始化数据
         this.lens = [];
-        this.unitIndexs = [];
-        this.lastYs = [];
+        
         this.pickerArray.forEach(picker=>{
             this.lens.push(picker.length);
-            this.lastYs.push(0); //默认距离是0
-            if(picker.length>=3){
-
-                this.unitIndexs.push(2);//默认是2
-    
-                
-            }else{
-                this.unitIndexs.push(0);
-
-            }
         })
+        
+    }
+
+    private setProvinceJson():void {
+        let provinceJson = [];
+        for(let k in reginJson['0']){
+            provinceJson.push({
+                text: reginJson['0'][k],
+                value: k
+            })
+        }
+        this.$set(this.pickerArray,0,provinceJson);
+    }
+
+    private setCityJson(code:number|string):void {
+        this.$set(this.pickerArray,1,[]);
+        let cityJson = [];
+        for(let k in reginJson[code]){
+            cityJson.push({
+                text: reginJson[code][k],
+                value: k
+            })
+        }
+        this.$set(this.pickerArray,1,cityJson);
+    }
+
+    private setAreaJson(code:number|string):void {
+        this.$set(this.pickerArray,2,[]);
+        let areaJson = [];
+        for(let k in reginJson[code]){
+            areaJson.push({
+                text: reginJson[code][k],
+                value: k
+            })
+        }
+        this.$set(this.pickerArray,2,areaJson);
+    }
+
+    created():void {
+        
+        let cityKey = Object.keys(reginJson['0']);
+        let areaKey = Object.keys(reginJson['0,'+cityKey[2]]);
+        this.setProvinceJson();
+        this.setCityJson('0,'+cityKey[2]); //默认取第三个(0开始)
+        this.setAreaJson('0,'+cityKey[2]+','+areaKey[0]); //默认取第一个
+        console.log(this.pickerArray);
+        this.initData();
+        this.unitIndexs = [2,0,0];
     }
     
     mounted():void {
         let $content = this.$refs.content;
-        console.log($content);
         let $groups = ($content as any).querySelectorAll('.vueUI-picker-group');
         Array.prototype.slice.call($groups).forEach((group,i)=>{
             let $groupWarpper = group.querySelector('.group-wrapper');
@@ -108,12 +140,7 @@ export default class SelectorPicker extends Vue {
                     this.endCb($groupWarpper,range,i)
                     },
             })
-        });
-        // this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
- 
-        // this.len = this.pickerArray.length;
-
-        // this.initData();
+        });    
 
     }
 
@@ -171,6 +198,37 @@ export default class SelectorPicker extends Vue {
         utils.setCss(target,{
             'transform':`translateY(${offsetY}px)`
         });
+
+        this.changeRegion(index);
+    }
+
+    private changeRegion(index:number):void {
+        switch(index){
+            case 0: //省份改变，需要联动改变市和区
+                this.changeProvince();
+            break;
+            case 1: //城市改变，需要改变区
+                this.changeCity();
+            break;
+
+        }
+    }
+
+    private changeProvince():void {
+        let cityKey = this.pickerArray[0][this.unitIndexs[0]].value;
+        let areaKey = Object.keys(reginJson['0,'+cityKey])[0];
+        console.log(cityKey,areaKey)
+        this.setCityJson('0,'+cityKey);
+        this.setAreaJson('0,'+cityKey+','+areaKey);
+        this.initData();
+    }
+
+    private changeCity():void {
+        let cityKey = this.pickerArray[0][this.unitIndexs[1]].value;
+        let areaKey = Object.keys(reginJson['0,'+cityKey])[0];
+        console.log(cityKey,areaKey)
+        this.setAreaJson('0,'+cityKey+','+areaKey);
+        this.initData();
     }
 
     private cancelHandler():void {

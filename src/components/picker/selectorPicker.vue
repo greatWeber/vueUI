@@ -48,8 +48,16 @@ export default class SelectorPicker extends Vue {
         if(this.show&&!this.unitHeight){
         
             let $content = this.$refs.content;
-            let $groups = ($content as any).querySelectorAll('.vueUI-picker-group');
+            let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
             this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
+            if(this.len<3){
+                // 当长度小于3的时候，要特殊处理
+                
+                this.unitIndex = 0;
+                utils.setCss($groups[0],{
+                'transform':`translateY(${this.unitHeight*2}px)`
+            });
+            }
         }
     }
     
@@ -113,10 +121,18 @@ export default class SelectorPicker extends Vue {
             current = min;
         }
         // 安全判断
+        let maxLen = 0;
+        if(this.len<3){ //当数据的长度<3的时候要特殊判断
+            maxLen = this.len;
+        }else{
+            maxLen = this.len-3;
+        }
+        // debugger
+        console.log(this.lastY,this.unitHeight);
         if(this.lastY>2*this.unitHeight){
             this.lastY = 2*this.unitHeight;
             current = 2;
-        }else if(Math.abs(this.lastY)>Math.abs((this.len-3)*this.unitHeight)){
+        }else if(this.lastY<0&&Math.abs(this.lastY)>Math.abs((maxLen)*this.unitHeight)){
             this.lastY = -(this.len-3)*this.unitHeight;
             current = -(this.len-3);
         }

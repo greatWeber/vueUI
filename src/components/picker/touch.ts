@@ -119,7 +119,7 @@ export default class Touchs  {
         e.preventDefault();
         // 限流-start
         this.limit++;
-        if(this.limit>=5){
+        if(this.limit>=3){
             this.limit = 0;
             this.bool = true;
         }
@@ -128,6 +128,7 @@ export default class Touchs  {
         // 限流-end
         let pageY = this._supportTouch?e.touches[0].pageY: e.pageY;
         this.range = pageY - this._startY;
+        console.log(this.range)
         this._moveCb(e,this.range);
     }
 
