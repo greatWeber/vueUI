@@ -1,0 +1,39 @@
+.vueUI-actionsheet {
+
+}
+
+.vueUI-actionsheet-wrapper {
+    position: fixed;
+    left: 10vw;
+    bottom: 0;
+    z-index: 3000;
+    width: 80vw;
+    height: auto;
+}
+
+.vueUI-actionsheet-content {
+    background: #fff;
+    border-radius: 0.32rem;
+}
+
+.vueUI-actionsheet-item {
+    line-height: 0.8rem;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: ceter;
+    color: #333;
+    &+li {
+        border-top: 0.5px solid #eee;
+    }
+}
+
+.vueUI-actionsheet-cancel {
+    line-height: 0.8rem;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: ceter;
+    color: @baseColor;
+    border-radius: 0.26rem;
+    margin: 0.2rem 0;
+    background: #fff;
+}

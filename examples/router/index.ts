@@ -21,6 +21,11 @@ const router = new Router({
             path:'/picker',
             name:'picker',
             component: ()=>import('@ex/views/picker.vue')
+        },
+        {
+            path:'/actionSheet',
+            name:'actionSheet',
+            component: ()=>import('@ex/views/actionSheet.vue')
         }
     ]
 });

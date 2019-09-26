@@ -4,7 +4,7 @@
         <slot></slot>
     </div>
     <transition name="fade">
-        <div class="vueUI-picker--mask" v-show="showMask" @click="showMask=false;"></div>
+        <div class="vueUI-mask" v-show="showMask" @click="showMask=false;"></div>
     </transition>
     <transition name="slice-bottom">
         <template v-if="mode=='multiSelector'">

@@ -5,12 +5,14 @@ import {remDesign} from '@/libs/rem';
 
 import button from './components/button/index.vue';
 import picker from './components/picker/index.vue';
+import actionSheet from './components/actionSheet/index.vue';
 
 remDesign();
 
 const components = [
     button,
-    picker
+    picker,
+    actionSheet,
 ];
 
 
@@ -19,7 +21,7 @@ const install = (Vue,config={})=>{
     if((install as any).installed) return;
     components.map((component)=>{
         console.log(component.name);
-        let name = component.name.charAt(0).toLowerCase()+component.name.slice(1);
+        let name = component.name.charAt(0).toLowerCase()+component.name.slice(1).toLowerCase();
         console.log(name,component.name);
         Vue.component('vueUI-'+name,component);
     })
