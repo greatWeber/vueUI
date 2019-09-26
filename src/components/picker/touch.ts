@@ -128,7 +128,6 @@ export default class Touchs  {
         // 限流-end
         let pageY = this._supportTouch?e.touches[0].pageY: e.pageY;
         this.range = pageY - this._startY;
-        console.log(this.range)
         this._moveCb(e,this.range);
     }
 

@@ -77,13 +77,14 @@ export default class SelectorPicker extends Vue {
         this.lastYs = [];
         this.pickerArray.forEach(picker=>{
             this.lens.push(picker.length);
-            this.lastYs.push(0); //默认距离是0
+            
             if(picker.length>=3){
-
+                this.lastYs.push(0); //默认距离是0
                 this.unitIndexs.push(2);//默认是2
     
                 
             }else{
+                this.lastYs.push(2*this.unitHeight); //默认距离是0
                 this.unitIndexs.push(0);
 
             }
@@ -164,6 +165,9 @@ export default class SelectorPicker extends Vue {
         }else if(this.lastYs[index]<0&&Math.abs(this.lastYs[index])>Math.abs((maxLen)*this.unitHeight)){
             this.lastYs[index] = -(this.lens[index]-3)*this.unitHeight;
             current = -(this.lens[index]-3);
+        }else if(Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<3&&this.unitIndexs[index]<=maxLen){
+            this.lastYs[index] = (3- maxLen)*this.unitHeight;
+            current = 3- maxLen;
         }
         let offsetY = current* this.unitHeight;
         this.unitIndexs[index] = 2 - current;

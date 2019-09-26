@@ -7,15 +7,14 @@
     <section class="vueUI-picker-content flex" ref="content">
         <div class="vueUI-picker-group flex-item" v-for="(picker,p) in pickerArray" :key="p">
             <ul class="group-wrapper" >
-                <template v-if="p<3">
-                    <li 
-                    v-for="(item,i) in picker"
-                    :key="i"
-                    class="vueUI-picker-unit"
-                    >
-                    {{item.text}}
-                    </li>
-                </template>
+                <li 
+                v-for="(item,i) in picker"
+                :key="i"
+                class="vueUI-picker-unit"
+                >
+                {{item}}
+                </li>
+                
                 
             </ul>
         </div>
@@ -28,14 +27,14 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Touch from './touch';
 import utils from '@/libs/utils';
-import reginJson from '@/libs/map';
 @Component
 export default class SelectorPicker extends Vue {
 
     @Prop(Boolean) readonly show;
-
+    @Prop({type:[String,Number],default:1999}) readonly startYear;
+    @Prop({type:[String,Number],default:2030}) readonly endYear;
    
-   private pickerArray: Array<any> = [];
+    private pickerArray: Array<any> = [];
     private lens:Array<number> = [];
 
     private touch:Touch;
@@ -50,90 +49,110 @@ export default class SelectorPicker extends Vue {
         // 由于在display:none的状态下，是获取不到元素的高度的，所以要监听show属性
         if(this.show&&!this.unitHeight){
         
-            let $content = this.$refs.content;
-            let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
-            this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
-            this.lastYs = [0,100,100];
-            utils.setCss($groups[1],{
-                'transform':`translateY(${2*this.unitHeight}px)`
-            });
-            utils.setCss($groups[2],{
-                'transform':`translateY(${2*this.unitHeight}px)`
-            })
-            
+           
+            this.initData(); 
+            let _this = this;
+            setTimeout(()=>{
+                
+                let $content = this.$refs.content;
+                let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
+                this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
+                this.lens.forEach((len,i)=>{
+                    _this.lastYs[i] = -(_this.unitIndexs[i]-3)*_this.unitHeight;
+                    utils.setCss($groups[i],{
+                        'transform':`translateY(${_this.lastYs[i]}px)`
+                    })
+                    
+                })
+            },10)
         }
     }
 
-    private resizeView(index:number):void {
-        // 视图复位
-        let $content = this.$refs.content;
-        let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
-        this.lastYs[index] = 2*this.unitHeight
-        utils.setCss($groups[index],{
-            'transform':`translateY(${2*this.unitHeight}px)`
-        });
+    @Watch('pickerArray')
+    pickerHandler(val:boolean,oldVal:boolean){
+        if(val){
+            this.initData();
+        }
     }
-    
 
     private initData():void {
         // 初始化数据
         this.lens = [];
-        
         this.pickerArray.forEach(picker=>{
             this.lens.push(picker.length);
         })
+    }
+
+    /**
+     * 根据当前时间设置默认的视图
+     */
+    private setTodayView():void {
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth();
+        let day = date.getDate();
+        let yearRange = year - this.startYear +1;
+        let monthRange = month +1;
+        let dayRange = day;
+        this.unitIndexs = [yearRange,monthRange,dayRange];
+        console.log(this.unitIndexs);
+    }
+
+    /**
+     * 设置年份
+     */
+    private setYearArray():void {
+        let years = [];
+        for(let i=this.startYear;i<=this.endYear;i++){
+            years.push(i);
+        }
+        this.$set(this.pickerArray,0,years);
+    }
+
+    /**
+     * 设置月份
+     */
+    private setMonthArray():void {
+        let months = [];
+        for(let i=1;i<=12;i++){
+            months.push(i>=10?i:'0'+i);
+        }
+        this.$set(this.pickerArray,1,months);
+    }
+
+    private setDayArray():void {
+        /**
+         * todo:
+         * 1. 获取当前选择的年份和月份
+         * 2. 通过new Date(year,month,0).getDate()获取当月的天数
+         */
+        let days = [];
+        let counts = new Date(
+            this.pickerArray[0][this.unitIndexs[0]],
+            this.pickerArray[1][this.unitIndexs[1]],0).getDate();
         
-    }
-
-    private setProvinceJson():void {
-        let provinceJson = [];
-        for(let k in reginJson['0']){
-            provinceJson.push({
-                text: reginJson['0'][k],
-                value: k
-            })
+        for(let i=1;i<=counts;i++){
+            days.push(i>=10?i:'0'+i)
         }
-        this.$set(this.pickerArray,0,provinceJson);
-    }
+        console.log(this.pickerArray);
+        console.log(this.unitIndexs);
+        console.log(this.pickerArray[0][this.unitIndexs[0]],
+            this.pickerArray[1][this.unitIndexs[1]],0)
+        this.$set(this.pickerArray,2,days);
 
-    private setCityJson(code:number|string):void {
-        this.$set(this.pickerArray,1,[]);
-        let cityJson = [];
-        for(let k in reginJson[code]){
-            cityJson.push({
-                text: reginJson[code][k],
-                value: k
-            })
-        }
-        this.$set(this.pickerArray,1,cityJson);
-    }
 
-    private setAreaJson(code:number|string):void {
-        this.$set(this.pickerArray,2,[]);
-        let areaJson = [];
-        for(let k in reginJson[code]){
-            areaJson.push({
-                text: reginJson[code][k],
-                value: k
-            })
-        }
-        this.$set(this.pickerArray,2,areaJson);
     }
 
     created():void {
-        
-        let cityKey = Object.keys(reginJson['0']);
-        let areaKey = Object.keys(reginJson['0,'+cityKey[2]]);
-        this.setProvinceJson();
-        this.setCityJson('0,'+cityKey[2]); //默认取第三个(0开始)
-        this.setAreaJson('0,'+cityKey[2]+','+areaKey[0]); //默认取第一个
-        console.log(this.pickerArray);
-        this.initData();
-        this.unitIndexs = [2,0,0];
+        this.setYearArray();
+        this.setMonthArray();
+        this.setTodayView();
+        this.setDayArray();
     }
     
     mounted():void {
         let $content = this.$refs.content;
+        console.log($content);
         let $groups = ($content as any).querySelectorAll('.vueUI-picker-group');
         Array.prototype.slice.call($groups).forEach((group,i)=>{
             let $groupWarpper = group.querySelector('.group-wrapper');
@@ -149,7 +168,12 @@ export default class SelectorPicker extends Vue {
                     this.endCb($groupWarpper,range,i)
                     },
             })
-        });    
+        });
+        // this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
+ 
+        // this.len = this.pickerArray.length;
+
+        // this.initData();
 
     }
 
@@ -171,6 +195,7 @@ export default class SelectorPicker extends Vue {
          * 1. 判断最后落在哪个格子上
          * 2. 安全范围判断，头部不能超过(2*height);尾部不能超过-(count-3*height);
          * 3. 记得当前格子对应的数据索引，由于一列有5个格子，从0开始算，中间是2
+         * 4. 修改年月后，天数是会动态变化的
          */
         this.lastYs[index] += endY;
         
@@ -194,7 +219,6 @@ export default class SelectorPicker extends Vue {
         }else{
             maxLen = this.lens[index]-3;
         }
-        console.log(this.lastYs[index],maxLen,this.unitIndexs[index]);
         if(this.lastYs[index]>2*this.unitHeight){
             this.lastYs[index] = 2*this.unitHeight;
             current = 2;
@@ -211,39 +235,10 @@ export default class SelectorPicker extends Vue {
         utils.setCss(target,{
             'transform':`translateY(${offsetY}px)`
         });
-
-        this.changeRegion(index);
-    }
-
-    private changeRegion(index:number):void {
-        switch(index){
-            case 0: //省份改变，需要联动改变市和区
-                this.changeProvince();
-            break;
-            case 1: //城市改变，需要改变区
-                this.changeCity();
-            break;
-
+        // 动态修改天数
+        if(index!=2){
+            this.setDayArray();
         }
-    }
-
-    private changeProvince():void {
-        let cityKey = this.pickerArray[0][this.unitIndexs[0]].value;
-        let areaKey = Object.keys(reginJson['0,'+cityKey])[0];
-        console.log(cityKey,areaKey)
-        this.setCityJson('0,'+cityKey);
-        this.setAreaJson('0,'+cityKey+','+areaKey);
-        this.initData();
-        this.resizeView(1);
-    }
-
-    private changeCity():void {
-        let cityKey = this.pickerArray[0][this.unitIndexs[1]].value;
-        let areaKey = Object.keys(reginJson['0,'+cityKey])[0];
-        console.log(cityKey,areaKey)
-        this.setAreaJson('0,'+cityKey+','+areaKey);
-        this.initData();
-        this.resizeView(2);
     }
 
     private cancelHandler():void {

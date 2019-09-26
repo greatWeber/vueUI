@@ -52,7 +52,7 @@ export default class SelectorPicker extends Vue {
             this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
             if(this.len<3){
                 // 当长度小于3的时候，要特殊处理
-                
+                this.lastY = 2*this.unitHeight;
                 this.unitIndex = 0;
                 utils.setCss($groups[0],{
                 'transform':`translateY(${this.unitHeight*2}px)`
@@ -128,13 +128,16 @@ export default class SelectorPicker extends Vue {
             maxLen = this.len-3;
         }
         // debugger
-        console.log(this.lastY,this.unitHeight);
         if(this.lastY>2*this.unitHeight){
             this.lastY = 2*this.unitHeight;
             current = 2;
         }else if(this.lastY<0&&Math.abs(this.lastY)>Math.abs((maxLen)*this.unitHeight)){
             this.lastY = -(this.len-3)*this.unitHeight;
             current = -(this.len-3);
+        }else if(Math.abs(this.lastY)+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<3&&this.unitIndex<=maxLen){
+            this.lastY = (3- maxLen)*this.unitHeight;
+            current = 3- maxLen;
+            // debugger
         }
         let offsetY = current* this.unitHeight;
         this.unitIndex = 2 - current;

@@ -12,6 +12,9 @@
     <p>
         <vueUI-picker mode="region"  @success="successCb">地址选择器</vueUI-picker>
     </p>
+    <p>
+        <vueUI-picker mode="date"   @success="successCb">日期选择器</vueUI-picker>
+    </p>
 </div>
 </template>
     
