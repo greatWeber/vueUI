@@ -7,8 +7,8 @@
     <transition name="slice-bottom">
         <div class="vueUI-actionsheet-wrapper" v-show="show">
             <ul class="vueUI-actionsheet-content" >
-                <li class="vueUI-actionsheet-item" 
-                    v-for="(item,i) in menu" :key="i"
+                <li class = "vueUI-actionsheet-item" 
+                    v-for = "(item,i) in menu" :key="i"
                     :style="{color: item.color||'initial'}">{{item.text}}</li>
 
             </ul>

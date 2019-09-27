@@ -9,16 +9,19 @@ import actionSheet from './components/actionSheet/index.vue';
 
 remDesign();
 
-const components = [
+(console as any).nlog = function(){
+    console.log.apply(console,arguments);
+}
+
+const components =[
     button,
     picker,
     actionSheet,
 ];
 
-
 const version = '1.0.0';
 const install = (Vue,config={})=>{
-    if((install as any).installed) return;
+    if ((install as any).installed)return;
     components.map((component)=>{
         console.log(component.name);
         let name = component.name.charAt(0).toLowerCase()+component.name.slice(1).toLowerCase();

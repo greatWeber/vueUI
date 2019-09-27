@@ -25,36 +25,32 @@
 </template>
     
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import Touch from './touch';
+import { Component, Vue, Prop, Watch, Mixins } from 'vue-property-decorator';
+import Touch from '@/libs/touch';
 import utils from '@/libs/utils';
+import pickerMixin from '@/mixins/picker';
+
 @Component
-export default class SelectorPicker extends Vue {
+export default class MultiPicker extends Mixins(pickerMixin){
 
-    @Prop(Boolean) readonly show;
-    @Prop({type:Array,default:[]}) readonly pickerArray;
-    @Prop(String) readonly rangeKey; //当传入对象数组的时候，需要指定key值
-   
-    private lens:Array<number> = [];
+    @Prop({type:Array,default:[]}) readonly data;
+    @Prop(String) readonly rangeKey; // 当传入对象数组的时候，需要指定key值
 
-    private touch:Touch;
-    private unitHeight: number; //格子的高度
-    private unitIndexs: Array<number> = []; //记录当前的数组索引
-    private lastYs:Array<number> = []; //记录上一次停止的位置
-
-    // computed
-    
+    @Watch('data')
+    dataHndler(val:boolean,oldVal:boolean){
+        this.pickerArray = this.data;
+        this.initData();
+    }
     @Watch('show')
     showHandler(val:boolean,oldVal:boolean){
         // 由于在display:none的状态下，是获取不到元素的高度的，所以要监听show属性
-        if(this.show&&!this.unitHeight){
-        
+        if (this.show&&!this.unitHeight){
             let $content = this.$refs.content;
             let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
             this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
             this.initData();
             this.lens.forEach((len,i)=>{
-                if(len<3){
+                if (len<3){
                     utils.setCss($groups[i],{
                         'transform':`translateY(${this.lastYs[i]}px)`
                     })
@@ -63,133 +59,50 @@ export default class SelectorPicker extends Vue {
         }
     }
 
-    @Watch('pickerArray')
-    pickerHandler(val:boolean,oldVal:boolean){
-        if(val){
-            this.initData();
-        }
-    }
-
     initData():void {
         // 初始化数据
-        this.lens = [];
-        this.unitIndexs = [];
-        this.lastYs = [];
+        this.lens =[];
+        this.unitIndexs =[];
+        this.lastYs =[];
         this.pickerArray.forEach(picker=>{
             this.lens.push(picker.length);
-            
-            if(picker.length>=3){
-                this.lastYs.push(0); //默认距离是0
-                this.unitIndexs.push(2);//默认是2
-    
-                
+            if (picker.length>=3){
+                this.lastYs.push(0); // 默认距离是0
+                this.unitIndexs.push(2);// 默认是2
             }else{
-                this.lastYs.push(2*this.unitHeight); //默认距离是0
+                this.lastYs.push(2*this.unitHeight); // 默认距离是0
                 this.unitIndexs.push(0);
 
             }
         })
     }
-    
+
+    created():void {
+        this.pickerArray = this.data;
+        this.initData();
+    }
+
     mounted():void {
         let $content = this.$refs.content;
-        console.log($content);
         let $groups = ($content as any).querySelectorAll('.vueUI-picker-group');
         Array.prototype.slice.call($groups).forEach((group,i)=>{
             let $groupWarpper = group.querySelector('.group-wrapper');
             this.touch = new Touch(group);
             this.touch.init({
-                startCb: (e:any)=>{this.startCb(group)},
+                startCb: (e:any)=>{this.startCb($groupWarpper)},
                 moveCb: (e:any,range:number)=>{
-                    
                     this.moveCb($groupWarpper,range,i)
                     },
                 endCb: (e:any,range:number)=>{
-                    
                     this.endCb($groupWarpper,range,i)
                     },
             })
         });
-        // this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
- 
-        // this.len = this.pickerArray.length;
-
-        // this.initData();
-
-    }
-
-    private startCb(e:any):void {
-
-    }
-
-    private moveCb(target:any,range:number,index:number):void {
-        
-        
-        utils.setCss(target,{
-            'transform':`translateY(${this.lastYs[index]+range}px)`
-        });
     }
 
     private endCb(target:any,endY:number,index:number):void {
-        /**
-         * todo:
-         * 1. 判断最后落在哪个格子上
-         * 2. 安全范围判断，头部不能超过(2*height);尾部不能超过-(count-3*height);
-         * 3. 记得当前格子对应的数据索引，由于一列有5个格子，从0开始算，中间是2
-         */
-        this.lastYs[index] += endY;
-        
-        let min = this.lastYs[index] >0?Math.floor(this.lastYs[index] / this.unitHeight): Math.ceil(this.lastYs[index]/this.unitHeight);
-        let max = this.lastYs[index] >0?min+1:min-1;
-        let middleHeight = (min+max)/2*this.unitHeight;
-        let current = 0;
-
-        console.log(min,max,this.unitHeight,middleHeight);
-        console.log(Math.abs(this.lastYs[index]))
-        // 判断落在哪个格子上
-        if(Math.abs(this.lastYs[index])>=Math.abs(middleHeight)){
-            current = max;
-        }else{
-            current = min;
-        }
-        // 安全判断
-        let maxLen = 0;
-        if(this.lens[index]<3){
-            maxLen = this.lens[index]; 
-        }else{
-            maxLen = this.lens[index]-3;
-        }
-        if(this.lastYs[index]>2*this.unitHeight){
-            this.lastYs[index] = 2*this.unitHeight;
-            current = 2;
-        }else if(this.lastYs[index]<0&&Math.abs(this.lastYs[index])>Math.abs((maxLen)*this.unitHeight)){
-            this.lastYs[index] = -(this.lens[index]-3)*this.unitHeight;
-            current = -(this.lens[index]-3);
-        }else if(Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<3&&this.unitIndexs[index]<=maxLen){
-            this.lastYs[index] = (3- maxLen)*this.unitHeight;
-            current = 3- maxLen;
-        }
-        let offsetY = current* this.unitHeight;
-        this.unitIndexs[index] = 2 - current;
-        console.log(current,offsetY)
-        utils.setCss(target,{
-            'transform':`translateY(${offsetY}px)`
-        });
+       this.commonEndCb(target,endY,index);
     }
-
-    private cancelHandler():void {
-        this.$emit('update:show',false);
-    }
-
-    private sureHandler():void {
-        this.$emit('update:show',false);
-        let value = [];  
-        this.pickerArray.forEach((picker,i)=>{
-            value.push(picker[this.unitIndexs[i]])
-        })
-        this.$emit('success',value);
-    }
-
 
 }
 </script>

@@ -48,11 +48,10 @@ export default class Touchs  {
         this._startY = val;
     }
 
-    
     get endY(): number{
         return this._endY; 
     }
-    
+
     set endY(val: number) {
         this._endY = val;
     }
@@ -88,7 +87,7 @@ export default class Touchs  {
             fn.apply(obj, arguments);
         }
     }
- 
+
     private touchStart(){
         // touchstart:
         // 1. 给target绑定touch事件
@@ -98,7 +97,7 @@ export default class Touchs  {
         this._touchMoveHander = this.binds(this,this.touchMoveHander);
         this._touchEndHander = this.binds(this,this.touchEndHander);
         _this.target.addEventListener(this.touchName.start,this._touchStartHander,false);
-        
+
     }
 
     private touchStartHander(){
@@ -111,7 +110,6 @@ export default class Touchs  {
         this.target.addEventListener(this.touchName.end,this._touchEndHander,false);
         this.target.addEventListener('touchcancel',this._touchEndHander,false);
     }
-  
 
     private touchMoveHander(){
         let e = arguments[0];
@@ -119,11 +117,11 @@ export default class Touchs  {
         e.preventDefault();
         // 限流-start
         this.limit++;
-        if(this.limit>=3){
+        if (this.limit>=3){
             this.limit = 0;
             this.bool = true;
         }
-        if(!this.bool)return;
+        if (!this.bool)return;
         this.bool = false;
         // 限流-end
         let pageY = this._supportTouch?e.touches[0].pageY: e.pageY;
@@ -131,26 +129,25 @@ export default class Touchs  {
         this._moveCb(e,this.range);
     }
 
-
-    private touchEndHander(){ 
+    private touchEndHander(){
         let e = arguments[0];
         let _this = this;
         // this.target.removeEventListener(this.touchName.start,_this._touchStartHander,false);
-        this.target.removeEventListener(this.touchName.move,this._touchMoveHander,false);
-        this.target.removeEventListener(this.touchName.end,this._touchEndHander,false);
-        this.target.removeEventListener('touchcancel',this._touchEndHander,false);
-        
+        this.target.removeEventListener(this.touchName.move,this._touchMoveHander,false );
+        this.target.removeEventListener(this.touchName.end,this._touchEndHander,false );
+        this.target.removeEventListener('touchcancel',this._touchEndHander,false );
+
         this.endY = this.range || 0; 
         // 随流效果
         this._endTime = new Date().getTime();
-        let rangeTime = (this._endTime - this._startTime)/1000;//单位: 秒
-        if(this.endY!==0){
+        let rangeTime = (this._endTime - this._startTime)/1000;// 单位: 秒
+        if (this.endY!==0){
 
-            let space = Math.floor(Math.abs(this.endY)/(rangeTime*4));
+            let space = Math.floor(Math.abs(this.endY)/(rangeTime*3));
             this.endY = this.endY>0? this.endY+space: this.endY-space;
 
         }
-        
+
         this._endCb(e, this.endY);
     }
 }
