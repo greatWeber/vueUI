@@ -9,6 +9,7 @@
             <ul class="vueUI-actionsheet-content" >
                 <li class = "vueUI-actionsheet-item" 
                     v-for = "(item,i) in menu" :key="i"
+                    @click="clickHandler(item)"
                     :style="{color: item.color||'initial'}">{{item.text}}</li>
 
             </ul>
@@ -20,7 +21,7 @@
     
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-    
+
 @Component
 export default class ActionSheet extends Vue {
 
@@ -31,12 +32,18 @@ export default class ActionSheet extends Vue {
 
     @Watch('show')
     showHandler(val:boolean,oldVal:boolean){
-        this.$emit('input',val); //实现v-model
+        this.$emit('input',val); // 实现v-model
     }
 
     @Watch('value')
     valueHandler(val:boolean,oldVal:boolean){
         this.show = val;
+    }
+
+    //  methods
+    private clickHandler(item:any):void {
+        item.fn&&item.fn();
+        this.show = false;
     }
 
 }

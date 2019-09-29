@@ -14,11 +14,13 @@ export default class ActionSheet extends Vue {
     menus: Array<any> = [
         {
             text:'分享QQ',
-            color:'blue'
+            color:'blue',
+            fn:()=>{console.log('you click 分享QQ')}
         },
         {
             text:'分享朋友圈',
-            color:'green'
+            color:'green',
+            fn:()=>{console.log('you click 分享朋友圈')}
         },
     ]
 }

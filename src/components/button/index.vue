@@ -19,8 +19,10 @@
     
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-    
-@Component
+
+@Component({
+    name: 'Button'
+})
 export default class Button extends Vue {
     @Prop(Boolean) readonly round?: boolean;
     @Prop(Boolean) readonly plain?: boolean;

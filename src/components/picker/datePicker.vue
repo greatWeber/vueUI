@@ -49,7 +49,7 @@ export default class DatePicker extends Mixins(pickerMixin) {
                 let $groups = ($content as any).querySelectorAll('.vueUI-picker-group .group-wrapper');
                 this.unitHeight = $groups[0].querySelector('.vueUI-picker-unit').clientHeight;
                 this.lens.forEach((len,i)=>{
-                    _this.lastYs[i] = -(_this.unitIndexs[i]-3)*_this.unitHeight;
+                    _this.lastYs[i] = -(_this.unitIndexs[i]-2)*_this.unitHeight;
                     utils.setCss($groups[i],{
                         'transform':`translateY(${_this.lastYs[i]}px)`
                     })  
@@ -81,11 +81,11 @@ export default class DatePicker extends Mixins(pickerMixin) {
         let year = date.getFullYear();
         let month = date.getMonth();
         let day = date.getDate();
-        let yearRange = year - this.startYear +1;
-        let monthRange = month +1;
-        let dayRange = day;
+        let yearRange = year - this.startYear ;
+        let monthRange = month ;
+        let dayRange = day -1;
         this.unitIndexs =[yearRange,monthRange,dayRange];
-        // console.log(this.unitIndexs);
+        console.log(this.unitIndexs);
     }
 
     /**

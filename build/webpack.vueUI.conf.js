@@ -1,13 +1,15 @@
-var path = require('path')
-var webpack = require('webpack')
-const utils = require('./utils')
-const pkg = require('../package.json')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const vueLoaderConfig = require('./vue-loader.conf')
+var path = require('path');
+var webpack = require('webpack');
+const utils = require('./utils');
+const pkg = require('../package.json');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const vueLoaderConfig = require('./vue-loader.conf');
+const UglifyJSPlugin  = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-let plugins = [
+let plugins = [ 
   // 注释头
   new webpack.BannerPlugin([
     pkg.name + ' v' + pkg.version + ' (' + pkg.homepage + ')',
@@ -25,16 +27,17 @@ let plugins = [
       NODE_ENV: '"production"'
     }
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    compress: {
-      warnings: false,
-      drop_console: true
-    }
-  }),
+  // new webpack.optimize.UglifyJsPlugin({
+  //   sourceMap: true,
+  //   compress: {
+  //     warnings: false,
+  //     drop_console: true
+  //   }
+  // }),
   new webpack.LoaderOptionsPlugin({
     minimize: true
-  })
+  }),
+  new VueLoaderPlugin()
 ];
 // 运行 `npm run build --report` 查看打包大小分布状况
 if(process.env.npm_config_report){
@@ -42,7 +45,7 @@ if(process.env.npm_config_report){
   plugins.push(new BundleAnalyzerPlugin())
 }
 module.exports = {
-  entry: path.resolve(__dirname, '../packages/index.js'),
+  entry: path.resolve(__dirname, '../src/index.ts'),
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: './',
@@ -66,6 +69,14 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
       },
       {
         test: /\.html$/,
@@ -97,16 +108,34 @@ module.exports = {
       },
     ]
   },
+  mode:'production',
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json','.ts'],
     alias: {
-      '@': resolve('examples'),
-      '~': resolve('src')
+      '@': resolve('src'),
+      '@ex': resolve('examples')
     }
   },
   // devtool: '#source-map',
   plugins,
   externals:{
     vue:'Vue'
+  },
+  optimization:{
+    minimizer:[
+      new UglifyJSPlugin({
+        uglifyOptions:{
+          sourceMap: true,
+          output: {
+            comments: false,
+          },
+          compress: {
+            warnings: false,
+            drop_console: false
+          }
+
+        }
+      })
+    ]
   }
 }

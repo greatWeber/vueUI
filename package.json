@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.vueUI.conf.js"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,9 @@
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^6.0.0",
     "css-loader": "^0.28.0",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^4.0.0-beta.8",
@@ -51,6 +52,7 @@
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "style-loader": "^1.0.0",
     "ts-loader": "^6.0.4",
     "tslint": "^5.20.0",
     "tslint-config-standard": "^8.0.1",

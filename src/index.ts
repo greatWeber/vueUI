@@ -9,25 +9,20 @@ import actionSheet from './components/actionSheet/index.vue';
 
 remDesign();
 
-(console as any).nlog = function(){
-    console.log.apply(console,arguments);
-}
+console.log('install start');
 
-const components =[
+const components ={
     button,
     picker,
     actionSheet,
-];
+};
 
 const version = '1.0.0';
 const install = (Vue,config={})=>{
     if ((install as any).installed)return;
-    components.map((component)=>{
-        console.log(component.name);
-        let name = component.name.charAt(0).toLowerCase()+component.name.slice(1).toLowerCase();
-        console.log(name,component.name);
-        Vue.component('vueUI-'+name,component);
-    })
+    for(let k in components){
+        Vue.component('vueUI-'+k.toLowerCase(),components[k]);
+    }
 };
 
 const vueUI = {
