@@ -30,7 +30,7 @@ import Touch from '@/libs/touch';
 import utils from '@/libs/utils';
 import pickerMixin from '@/mixins/picker';
 
-@Component
+@Component({name:'MultiPicker'})
 export default class MultiPicker extends Mixins(pickerMixin){
 
     @Prop({type:Array,default:[]}) readonly data;

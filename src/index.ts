@@ -6,6 +6,7 @@ import {remDesign} from '@/libs/rem';
 import button from './components/button/index.vue';
 import picker from './components/picker/index.vue';
 import actionSheet from './components/actionSheet/index.vue';
+import badge from './components/badge/index.vue';
 
 remDesign();
 
@@ -15,6 +16,7 @@ const components ={
     button,
     picker,
     actionSheet,
+    badge,
 };
 
 const version = '1.0.0';

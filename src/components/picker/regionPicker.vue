@@ -31,9 +31,9 @@ import utils from '@/libs/utils';
 import reginJson from '@/libs/map';
 import pickerMixin from '@/mixins/picker';
 
-@Component
+@Component({name:'RegionPicker'})
 export default class RegionPicker extends Mixins(pickerMixin){
-    
+
     @Watch('show')
     showHandler(val:boolean,oldVal:boolean){
         // 由于在display:none的状态下，是获取不到元素的高度的，所以要监听show属性

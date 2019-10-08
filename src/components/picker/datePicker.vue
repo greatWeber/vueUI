@@ -29,7 +29,7 @@ import Touch from '@/libs/touch';
 import utils from '@/libs/utils';
 import pickerMixin from '@/mixins/picker';
 
-@Component
+@Component({name:'DatePicker'})
 export default class DatePicker extends Mixins(pickerMixin) {
 
     @Prop(Boolean) readonly show;

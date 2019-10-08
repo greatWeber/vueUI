@@ -27,7 +27,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Touch from '@/libs/touch';
 import utils from '@/libs/utils';
 
-@Component
+@Component({name:'SelectorPicker'})
 export default class SelectorPicker extends Vue {
 
     @Prop(Boolean) readonly show;

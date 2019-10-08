@@ -22,7 +22,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
-@Component
+@Component({name:'ActionSheet'})
 export default class ActionSheet extends Vue {
 
     @Prop({type:Array,default:()=>{return[]}}) readonly menu;
