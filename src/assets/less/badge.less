@@ -1,14 +1,30 @@
 .vueUI-badge {
+    display: inline-block;
     position: relative;
 }
 
 .vueUI-badge .badge-point {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -5px;
+    top: -5px;
     z-index: 1;
-    width: 0.1rem;
-    height: 0.1rem;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: red;
+}
+
+.vueUI-badge .badge-number {
+    position: absolute;
+    right: -0.2rem;
+    top: -0.2rem;
+    z-index: 1;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    line-height: 0.4rem;
+    text-align: center;
 }

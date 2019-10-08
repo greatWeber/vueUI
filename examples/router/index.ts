@@ -26,6 +26,11 @@ const router = new Router({
             path:'/actionSheet',
             name:'actionSheet',
             component: ()=>import('@ex/views/actionSheet.vue')
+        },
+        {
+            path:'/badge',
+            name:'badge',
+            component: ()=>import('@ex/views/badge.vue')
         }
     ]
 });
