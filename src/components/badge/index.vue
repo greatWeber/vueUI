@@ -16,7 +16,7 @@ export default class Badge extends Vue {
 
     // computed
     get number(){
-        if (this.num>99){
+        if (this.num-0>99){
             return '...'
         }else{
             return this.num

@@ -31,6 +31,11 @@ const router = new Router({
             path:'/badge',
             name:'badge',
             component: ()=>import('@ex/views/badge.vue')
+        },
+        {
+            path:'/cell',
+            name:'cell',
+            component: ()=>import('@ex/views/cell.vue')
         }
     ]
 });

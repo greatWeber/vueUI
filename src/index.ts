@@ -7,6 +7,7 @@ import button from './components/button/index.vue';
 import picker from './components/picker/index.vue';
 import actionSheet from './components/actionSheet/index.vue';
 import badge from './components/badge/index.vue';
+import cell from './components/cell/index.vue';
 
 remDesign();
 
@@ -17,6 +18,7 @@ const components ={
     picker,
     actionSheet,
     badge,
+    cell,
 };
 
 const version = '1.0.0';

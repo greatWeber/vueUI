@@ -37,7 +37,7 @@ export default class Button extends Vue {
      * 点击事件
      */
     private handleClick(e:any):void {
-        if(this.disabled) return;
+        if (this.disabled) return;
         this.$emit('click',e);
     }
 

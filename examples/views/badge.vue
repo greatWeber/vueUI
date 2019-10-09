@@ -11,6 +11,9 @@
     <li class="list-item">
         <vueUI-badge type="number" num="99"><span class="text">我的订单</span></vueUI-badge> 
     </li>
+    <li class="list-item">
+        <vueUI-badge type="number" num="100"><vueUI-button class="btn" size="mini">订单</vueUI-button></vueUI-badge> 
+    </li>
 </ul>
 </template>
     
