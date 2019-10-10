@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import '@/assets/less/index.less';
 import {remDesign} from '@/libs/rem';
+import utils from '@/libs/utils';
 
 import button from './components/button/index.vue';
 import picker from './components/picker/index.vue';
@@ -10,6 +11,8 @@ import badge from './components/badge/index.vue';
 import cell from './components/cell/index.vue';
 
 remDesign();
+
+utils.ripple();
 
 console.log('install start');
 

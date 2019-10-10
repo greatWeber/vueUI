@@ -1,5 +1,5 @@
 <template>
-<div class="vueUI-cell flex space-between" @click="jumpHandler">
+<div class="vueUI-cell flex space-between vueUI-ripple" @click="jumpHandler">
     <p class="vueUI-cell-left">
         <span v-if="iconType=='icon'&&icon" class="vueUI-cell-icon icon v-m" :class="icon" :style="{color:color}"></span>
         <img v-if="iconType=='img'&&icon" class="vueUI-cell-img v-m" :src="icon" alt="">
@@ -27,7 +27,9 @@ export default class Cell extends Vue {
 
     private jumpHandler():void {
         if (!this.to)return;
-        (this as any).$router.push(this.to);
+        setTimeout(()=>{
+            (this as any).$router.push(this.to);
+        },500)
     }
 }
 </script>
