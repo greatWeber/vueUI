@@ -9,6 +9,9 @@ import picker from './components/picker/index.vue';
 import actionSheet from './components/actionSheet/index.vue';
 import badge from './components/badge/index.vue';
 import cell from './components/cell/index.vue';
+import loading from './components/loading/loading.vue';
+
+import Loading from './components/loading/index';
 
 remDesign();
 
@@ -22,6 +25,7 @@ const components ={
     actionSheet,
     badge,
     cell,
+    loading,
 };
 
 const version = '1.0.0';
@@ -31,6 +35,9 @@ const install = (Vue,config={})=>{
         Vue.component('vueUI-'+k.toLowerCase(),components[k]);
     }
 };
+
+// 全局方法调用
+Vue.prototype.$loading = Loading;
 
 const vueUI = {
     install,

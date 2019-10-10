@@ -36,6 +36,11 @@ const router = new Router({
             path:'/cell',
             name:'cell',
             component: ()=>import('@ex/views/cell.vue')
+        },
+        {
+            path:'/loading',
+            name:'loading',
+            component: ()=>import('@ex/views/loading.vue')
         }
     ]
 });
