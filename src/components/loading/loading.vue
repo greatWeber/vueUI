@@ -26,7 +26,6 @@ import pacman from './pacman.vue';
 import squareJellyBox from './squareJellyBox.vue';
 import { resolve } from 'dns';
 
-
 @Component({
     name:'Loading',
     components:{

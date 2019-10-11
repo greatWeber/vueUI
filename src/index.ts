@@ -10,6 +10,7 @@ import actionSheet from './components/actionSheet/index.vue';
 import badge from './components/badge/index.vue';
 import cell from './components/cell/index.vue';
 import loading from './components/loading/loading.vue';
+import tab from './components/tab/index.vue';
 
 import Loading from './components/loading/index';
 
@@ -26,6 +27,7 @@ const components ={
     badge,
     cell,
     loading,
+    tab,
 };
 
 const version = '1.0.0';

@@ -48,6 +48,12 @@ const router = new Router({
             name:'loading',
             meta:{title:'加载'},
             component: ()=>import('@ex/views/loading.vue')
+        },
+        {
+            path:'/tab',
+            name:'tab',
+            meta:{title:'导航条'},
+            component: ()=>import('@ex/views/tab.vue')
         }
     ]
 });

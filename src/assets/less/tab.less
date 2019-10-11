@@ -1,0 +1,77 @@
+
+.vueUI-tab {
+    line-height: 0.8rem;
+    font-size: 14px;
+    color: #333;
+}
+.vueUI-tab-flex {
+    &>li {
+        flex: 1;
+    }
+}
+
+.vueUI-tab-content {
+    position: relative;
+
+    .vueUI-tab-btn {
+        width: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-left: 1px solid #eee;
+        box-shadow: 0 0 10px #ccc;
+        background: #fff;
+    }
+}
+ 
+.vueUI-tab-more {
+    overflow: hidden;
+    position: relative;
+    height: 0.8rem;
+    border-bottom: 1px solid #eee;
+    &>li {
+        padding: 0 0.35rem;
+    }
+
+    
+}
+
+.vueUI-tab-wrapper {
+    text-align: left;
+    font-size: 0;
+    &>li {
+        display: inline-block;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        padding: 0 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+        margin: 0.2rem;
+        font-size: 14px;
+    }
+
+    .vueUI-tab-act {
+        color: @baseColor;
+        font-weight: bold;
+        border-color: @baseColor;
+    }
+}
+
+.vueUI-tab-active {
+    position: relative;
+    color: @baseColor;
+    font-weight: bold;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: @baseColor;
+    }
+}
