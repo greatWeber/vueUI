@@ -60,6 +60,12 @@ const router = new Router({
             name:'toast',
             meta:{title:'提示'},
             component: ()=>import('@ex/views/toast.vue')
+        },
+        {
+            path:'/modal',
+            name:'modal',
+            meta:{title:'弹窗'},
+            component: ()=>import('@ex/views/modal.vue')
         }
     ]
 });

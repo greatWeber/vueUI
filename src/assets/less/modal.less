@@ -1,0 +1,49 @@
+
+.vueUI-modal-wapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 999;
+    width: 5rem;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.vueUI-modal-title {
+    font-size: 18px;
+    line-height: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.vueUI-modal-content {
+    padding: 0.5rem 0.3rem;
+    line-height: 1.5;
+}
+
+.vueUI-modal-input {
+    border: 1px solid #ccc;
+    height: 0.6rem;
+    width: 100%;
+    border-radius: 5px;
+    text-indent: 0.2rem;
+
+}
+
+.vueUI-modal-footer {
+    line-height: 0.8rem;
+    border-top: 1px solid #eee;
+    >span {
+        flex: 1;
+    }
+}
+
+.vueUI-modal-cancel {
+    color: #666;
+    border-right: 1px solid #eee;
+}
+
+.vueUI-modal-confirm {
+    color: @baseColor;
+}
