@@ -11,7 +11,6 @@ const utils = {
             (event.target as any).classList.remove('vueUI-ripple-active');
         }
         document.addEventListener('touchstart',(e)=>{
-            console.log((e.target as any).classList);
             if ((e.target as any).classList.contains('vueUI-ripple')){
                 (e.target as any).classList.add('vueUI-ripple-active');
                 e.target.removeEventListener('animationend',animationend);

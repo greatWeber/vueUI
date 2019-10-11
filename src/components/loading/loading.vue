@@ -4,6 +4,11 @@
         <div class="vueUI-loading flex flex-colmun" >
             <div class="vueUI-loading-animation"> 
                 <ball-span-fade v-if="type=='ballSpanFade'"></ball-span-fade>
+                <ball-triangle-path v-else-if="type=='ballTrianglePath'"></ball-triangle-path>
+                <line-scale v-else-if="type=='lineScale'"></line-scale>
+                <line-spin v-else-if="type=='lineSpin'"></line-spin>
+                <pacman v-else-if="type=='pacman'"></pacman>
+                <square-jelly-box v-else-if="type=='squareJellyBox'"></square-jelly-box>
             </div>
             <p class="vueUI-loading-text">{{title}}</p>
         </div>
@@ -14,6 +19,11 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch} from 'vue-property-decorator';
 import ballSpanFade from './ballSpanFade.vue';
+import ballTrianglePath from './ballTrianglePath.vue';
+import lineScale from './lineScale.vue';
+import lineSpin from './lineSpin.vue';
+import pacman from './pacman.vue';
+import squareJellyBox from './squareJellyBox.vue';
 import { resolve } from 'dns';
 
 
@@ -21,6 +31,11 @@ import { resolve } from 'dns';
     name:'Loading',
     components:{
         ballSpanFade,
+        ballTrianglePath,
+        lineScale,
+        lineSpin,
+        pacman,
+        squareJellyBox,
     },
     created(){
         this.type = this.Type;

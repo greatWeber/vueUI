@@ -14,6 +14,9 @@ export default class Loading extends Vue {
 
     private loadingHandler():void {
         (this as any).$loading.show();
+        setTimeout(()=>{
+            (this as any).$loading.hide();
+        },2000)
     }
 }
 </script>
