@@ -13,6 +13,7 @@ import loading from './components/loading/loading.vue';
 import tab from './components/tab/index.vue';
 
 import Loading from './components/loading/index';
+import Toast from './components/toast/index';
 
 remDesign();
 
@@ -40,6 +41,7 @@ const install = (Vue,config={})=>{
 
 // 全局方法调用
 Vue.prototype.$loading = Loading;
+Vue.prototype.$toast = Toast;
 
 const vueUI = {
     install,

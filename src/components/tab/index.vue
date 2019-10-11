@@ -19,7 +19,7 @@
                 {{item[tabKey]}}</li>
         </ul>
         <p class="vueUI-tab-btn" @click="openFlag=!openFlag">
-            <span class="icon icon_down"></span>
+            <span class="icon icon-down"></span>
         </p>
 
         <ul class="vueUI-tab-wrapper "  v-show="openFlag">

@@ -7,7 +7,7 @@
     </p>
     <p class="vueUI-cell-right">
         <span class="vueUI-cell-value v-m">{{value}}</span>
-        <span v-if="arrow==true" class="vueUI-cell-arrow v-m icon icon_next"></span>
+        <span v-if="arrow==true" class="vueUI-cell-arrow v-m icon icon-next"></span>
     </p>
 </div>
 </template> 

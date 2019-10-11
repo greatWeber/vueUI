@@ -12,7 +12,7 @@
             'is-loading':loading
         }
     ]">
-    <span v-if="loading" class="icon icon_loading vueUI-icon--loading"></span>
+    <span v-if="loading" class="icon icon-loading vueUI-icon--loading"></span>
     <slot></slot>
 </button>
 </template>

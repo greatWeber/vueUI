@@ -54,6 +54,12 @@ const router = new Router({
             name:'tab',
             meta:{title:'导航条'},
             component: ()=>import('@ex/views/tab.vue')
+        },
+        {
+            path:'/toast',
+            name:'toast',
+            meta:{title:'提示'},
+            component: ()=>import('@ex/views/toast.vue')
         }
     ]
 });
