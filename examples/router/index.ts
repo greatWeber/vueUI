@@ -78,6 +78,12 @@ const router = new Router({
             name:'loadmore',
             meta:{title:'加载更多'},
             component: ()=>import('@ex/views/loadmore.vue')
+        },
+        {
+            path:'/popup',
+            name:'popup',
+            meta:{title:'弹层'},
+            component: ()=>import('@ex/views/popup.vue')
         }
     ]
 });

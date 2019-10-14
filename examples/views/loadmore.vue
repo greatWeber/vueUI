@@ -33,7 +33,6 @@ export default class Loadmore extends Vue {
 
     private refreshHandler():void {
         setTimeout((this.$refs.loadmore as any).refreshEnd,2000);
-        // (this.$refs.loadmore as any).refreshEnd();
     }
 
     private loadmoreHandler():void {

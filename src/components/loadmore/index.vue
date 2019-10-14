@@ -166,36 +166,5 @@ export default class Loadmore extends Vue {
 </script>
 
 <style lang="less" scoped>
-.vue-loadmore-wrapper {
-  position: relative;
 
-  .refresh-inner {
-    position: absolute;
-    top: -2rem;
-    left: 0;
-    width: 100%;
-    height: 1rem;
-    text-align: center;
-    background: #f5f5f5;
-    z-index: 999;
-    transition: all 0.3s linear;
-  }
-
-  .refresh-pull,
-  .refresh-loading,
-  .refresh-end {
-    width: 100%;
-    line-height: 1rem;
-    color: #999;
-    font-size: 0.3rem;
-    text-align: center;
-  }
-}
-
-.vueUI-loadmore-foot {
-    line-height: 1rem;
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-}
 </style>
