@@ -4,6 +4,7 @@
     @click="handleClick"
     :class="[
         'vueUI-button',
+        'vueUI-ripple',
         size? 'vueUI-button--'+size : '',
         type?'vueUI-button--'+type:'',
         {

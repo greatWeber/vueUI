@@ -66,6 +66,12 @@ const router = new Router({
             name:'modal',
             meta:{title:'弹窗'},
             component: ()=>import('@ex/views/modal.vue')
+        },
+        {
+            path:'/swiper',
+            name:'swiper',
+            meta:{title:'轮播图'},
+            component: ()=>import('@ex/views/swiper.vue')
         }
     ]
 });
