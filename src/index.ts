@@ -12,6 +12,7 @@ import cell from './components/cell/index.vue';
 import loading from './components/loading/loading.vue';
 import tab from './components/tab/index.vue';
 import swiper from './components/swiper/index.vue';
+import loadmore from './components/loadmore/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -32,6 +33,7 @@ const components ={
     loading,
     tab,
     swiper,
+    loadmore,
 };
 
 const version = '1.0.0';

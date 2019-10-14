@@ -72,6 +72,12 @@ const router = new Router({
             name:'swiper',
             meta:{title:'轮播图'},
             component: ()=>import('@ex/views/swiper.vue')
+        },
+        {
+            path:'/loadmore',
+            name:'loadmore',
+            meta:{title:'加载更多'},
+            component: ()=>import('@ex/views/loadmore.vue')
         }
     ]
 });
