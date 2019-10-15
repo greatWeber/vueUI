@@ -84,6 +84,12 @@ const router = new Router({
             name:'popup',
             meta:{title:'弹层'},
             component: ()=>import('@ex/views/popup.vue')
+        },
+        {
+            path:'/preview',
+            name:'preview',
+            meta:{title:'图片预览'},
+            component: ()=>import('@ex/views/preview.vue')
         }
     ]
 });

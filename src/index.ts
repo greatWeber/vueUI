@@ -18,6 +18,7 @@ import popup from './components/popup/index.vue';
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
 import Modal from './components/modal/index';
+import Preview from './components/preview/index';
 
 remDesign();
 
@@ -40,6 +41,7 @@ const components ={
 
 const version = '1.0.0';
 const install = (Vue,config={})=>{
+    Vue.prototype.vueUIConfig = config;
     if ((install as any).installed)return;
     for(let k in components){
         Vue.component('vueUI-'+k.toLowerCase(),components[k]);
@@ -50,6 +52,9 @@ const install = (Vue,config={})=>{
 Vue.prototype.$loading = Loading;
 Vue.prototype.$toast = Toast;
 Vue.prototype.$modal = Modal;
+Vue.prototype.$preview = Preview.instance;
+
+Preview.preview();
 
 const vueUI = {
     install,
