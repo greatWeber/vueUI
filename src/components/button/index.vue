@@ -26,7 +26,7 @@ export default class Button extends Vue {
     @Prop(Boolean) readonly round?: boolean;
     @Prop(Boolean) readonly plain?: boolean;
     @Prop(Boolean) readonly loading?: boolean;
-    @Prop({type:String,default:'mini'}) readonly size?: string;
+    @Prop({type:String,default:'mini'}) readonly size?: string; // mini, small, medium
     @Prop({type:String,default:''}) readonly type?: string;
 
     // computed : 是否禁用按钮

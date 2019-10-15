@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "build:ex": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.js",
     "start": "npm run dev",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.vueUI.conf.js"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.vueUI.conf.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+
   },
   "repository": {
     "type": "git",
@@ -65,6 +69,7 @@
     "vue-property-decorator": "^8.2.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.2.0",
     "webpack": "^4.39.3",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-cli": "^3.3.7",
