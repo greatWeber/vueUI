@@ -17,3 +17,47 @@
     
     transform: translateY(100vh);
 }
+
+// 从底部弹出
+.bottom-enter-active, .bottom-leave-active {
+    transform: translateY(0);
+    transition: 0.5s transform linear;
+}
+
+.bottom-enter, .bottom-leave-to {
+    
+    transform: translateY(100vh);
+}
+
+// 从顶部弹出
+.top-enter-active, .top-leave-active {
+    transform: translateY(0);
+    transition: 0.5s transform linear;
+}
+
+.top-enter, .top-leave-to {
+    
+    transform: translateY(-100vh);
+}
+
+// 从左边弹出
+.left-enter-active, .left-leave-active {
+    transform: translateX(0);
+    transition: 0.5s transform linear;
+}
+
+.left-enter, .left-leave-to {
+    
+    transform: translateX(100vh);
+}
+
+// 从右边弹出
+.right-enter-active, .right-leave-active {
+    transform: translateX(0);
+    transition: 0.5s transform linear;
+}
+
+.right-enter, .right-leave-to {
+    
+    transform: translateX(-100vh);
+}

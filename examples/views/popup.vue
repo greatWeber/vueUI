@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vueUI-popup :showPopup.sync="showPopup"></vueUI-popup>
+    <vueUI-popup :showPopup.sync="showPopup" position="right"></vueUI-popup>
 </div>
 </template>
     
