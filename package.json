@@ -10,7 +10,6 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.vueUI.conf.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
-
   },
   "repository": {
     "type": "git",

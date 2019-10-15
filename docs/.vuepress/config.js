@@ -19,6 +19,7 @@ module.exports = {
                 collapsable:false,
                 children:[
                     '/base/button',
+                    '/base/badge',
                 ]
             }
         ]

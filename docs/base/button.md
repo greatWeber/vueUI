@@ -47,3 +47,8 @@
 | round   | 是否椭圆       | boolean | -                                       | false  |
 | loading | 是否带加载动画 | boolean | -                                       | false  |
 | plain   | 是否朴素按钮   | boolean | -                                       | false  |
+
+## 例子
+> 直接打开链接，或者手机扫码查看。
+
+<qrcode href="https://greatweber.github.io/vueUI/dist/index.html#/button"></qrcode>
