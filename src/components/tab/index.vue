@@ -28,7 +28,7 @@
             :class="[TabIndex==i?'vueUI-tab-act':'']" 
             @click="clickHandler(i)"
             v-for="(item,i) in tabs" :key="i">
-                {{item[tabKey]}}</li>
+                {{tabKey?item[tabKey]:item}}</li>
         </ul>
     </div>
 </div>
@@ -49,7 +49,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 export default class Tab extends Vue {
     @Prop({type:Array,default:()=>{return []}}) readonly tabs;
     @Prop({type:[Number,String],default:0}) readonly tabIndex;
-    @Prop({type:String,default:'label'}) readonly tabKey; // 自定义key值
+    @Prop({type:String,default:''}) readonly tabKey; // 自定义key值
 
     private TabIndex :Number|String = 0;
     private openFlag :Boolean = false;

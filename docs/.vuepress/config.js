@@ -20,6 +20,12 @@ module.exports = {
                 children:[
                     '/base/button',
                     '/base/badge',
+                    '/base/cell',
+                    '/base/tab',
+                    '/base/actionSheet',
+                    '/base/swiper',
+                    '/base/loadmore',
+                    '/base/popup',
                 ]
             }
         ]

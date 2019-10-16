@@ -19,7 +19,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 export default class Popup extends Vue {
     @Prop({type:String,default:'fade'}) readonly position;  // fade,left,right,top,bottom
     @Prop({type:Boolean,default:true}) readonly showClose;
-    @Prop({type:Boolean,default:true}) readonly showPopup;
+    @Prop({type:Boolean,default:false}) readonly showPopup;
 
     private closeHandler():void {
         this.$emit('update:showPopup',false);
