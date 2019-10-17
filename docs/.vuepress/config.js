@@ -3,7 +3,8 @@ module.exports = {
     description: 'vueUI 说明文档',
     themeConfig:{
         nav: [
-            {text:'主页',link:'/'}
+            {text:'主页',link:'/'},
+            {text:'Github',link:'https://github.com/greatWeber/vueUI'}
         ],
         sidebar:[
             {
