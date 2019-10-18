@@ -90,6 +90,12 @@ const router = new Router({
             name:'preview',
             meta:{title:'图片预览'},
             component: ()=>import('@ex/views/preview.vue')
+        },
+        {
+            path:'/form',
+            name:'form',
+            meta:{title:'表单'},
+            component: ()=>import('@ex/views/form.vue')
         }
     ]
 });

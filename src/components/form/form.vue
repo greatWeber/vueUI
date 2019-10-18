@@ -5,15 +5,10 @@
 </template>
     
 <script lang="ts">
-import { Component, Vue, Prop, Watch} from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch, Provide} from 'vue-property-decorator';
 
 @Component({
     name: 'Form',
-    provide() {  //高阶
-      return {
-        Form: this
-      };
-    },
     created(){
         // 监听，如果有字段就统一添加到form.fields中
         this.$on('vueUI.form.addField',field=>{
@@ -33,6 +28,8 @@ import { Component, Vue, Prop, Watch} from 'vue-property-decorator';
 export default class Form extends Vue {
     @Prop(Object) readonly model;
     @Prop(Object) readonly rules;
+
+    @Provide() Form = this;
 
     private fields: Array<any> = []; // 保存所有的字段
 
@@ -77,4 +74,5 @@ export default class Form extends Vue {
 </script>
     
 <style lang="less" scoped>
+
 </style>

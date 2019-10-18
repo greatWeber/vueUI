@@ -14,6 +14,9 @@ import tab from './components/tab/index.vue';
 import swiper from './components/swiper/index.vue';
 import loadmore from './components/loadmore/index.vue';
 import popup from './components/popup/index.vue';
+import form from './components/form/form.vue';
+import formItem from './components/form/formItem.vue';
+import input from './components/input/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -37,6 +40,9 @@ const components ={
     swiper,
     loadmore,
     popup,
+    form,
+    formItem,
+    input,
 };
 
 const version = '1.0.0';
