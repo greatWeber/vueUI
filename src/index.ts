@@ -50,7 +50,8 @@ const install = (Vue,config={})=>{
     Vue.prototype.vueUIConfig = config;
     if ((install as any).installed)return;
     for(let k in components){
-        Vue.component('vueUI-'+k.toLowerCase(),components[k]);
+        let name = k.slice(0,1).toLowerCase()+k.slice(1).replace(/\B([A-Z])/g, '-$1').toLowerCase();
+        Vue.component('vueUI-'+name,components[k]);
     }
 };
 
