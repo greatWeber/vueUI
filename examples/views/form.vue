@@ -7,6 +7,9 @@
         <vueUI-formitem prop="age" label="年龄">
             <vueUI-input type="number" v-model="formData.age"></vueUI-input>
         </vueUI-formitem>
+        <vueUI-formitem label="留言">
+            <vueUI-input type="textarea" v-model="formData.remark"></vueUI-input>
+        </vueUI-formitem>
     </vueUI-form>
 </div>
 </template>
@@ -18,7 +21,8 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Form extends Vue {
     private formData: Object = {
         name:'',
-        age:0
+        age:0,
+        remark:''
     };
 
     private rules: Object = {

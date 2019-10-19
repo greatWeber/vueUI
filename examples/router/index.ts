@@ -96,6 +96,12 @@ const router = new Router({
             name:'form',
             meta:{title:'表单'},
             component: ()=>import('@ex/views/form.vue')
+        },
+        {
+            path:'/input',
+            name:'input',
+            meta:{title:'输入框'},
+            component: ()=>import('@ex/views/input.vue')
         }
     ]
 });
