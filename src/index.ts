@@ -17,6 +17,8 @@ import popup from './components/popup/index.vue';
 import form from './components/form/form.vue';
 import formItem from './components/form/formItem.vue';
 import input from './components/input/index.vue';
+import radio from './components/radio/index.vue';
+import radioGroup from './components/radio/radioGroup.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -43,6 +45,8 @@ const components ={
     form,
     formItem,
     input,
+    radio,
+    radioGroup,
 };
 
 const version = '1.0.0';

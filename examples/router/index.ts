@@ -102,6 +102,12 @@ const router = new Router({
             name:'input',
             meta:{title:'输入框'},
             component: ()=>import('@ex/views/input.vue')
+        },
+        {
+            path:'/radio',
+            name:'radio',
+            meta:{title:'单选按钮'},
+            component: ()=>import('@ex/views/radio.vue') 
         }
     ]
 });

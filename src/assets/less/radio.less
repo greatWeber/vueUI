@@ -1,0 +1,38 @@
+.vueUI-radio {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.3rem;
+}
+.vueUI-radio-input {
+    width: 0.3rem;
+    height: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vueUI-radio-input.is-checked {
+    position: relative;
+    background: @baseColor;
+    border-color: @baseColor;
+    &:after {
+        content:'';
+        position: absolute;
+        left: 0.1rem;
+        top: 0.1rem;
+        width: 0.1rem;
+        height: 0.1rem;
+        border-radius: 50%;
+        background: #fff;
+    }
+}
+.vueUI-radio-label {
+    color: #333;
+    vertical-align: middle;
+}
+
+.vueUI-radio-label.is-checked {
+    color: @baseColor;
+}
