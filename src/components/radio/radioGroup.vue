@@ -19,6 +19,7 @@ export default class RadioGroup extends Vue {
     valueHandler(){
         // 触发验证
         (this as any).dispatch('FormItem','vueUI.form.change',[this.value]);
+        this.$emit('change',this.value);
     }
 
 }

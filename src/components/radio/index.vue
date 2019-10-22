@@ -1,10 +1,18 @@
 <template>
-<label class="vueUI-radio" role="radio" @click="radioHandler">
+<label class="vueUI-radio" role="radio" @click="radioHandler" v-if="type==='column'">
     <span class="vueUI-radio-input" :class="isChecked?'is-checked':''">
         <!-- <radio class="vueUI-radio-self" v-model="radioValue"></radio> -->
     </span>
     <span class="vueUI-radio-label" :class="isChecked?'is-checked':''">
         <slot></slot>
+    </span>
+</label>
+<label class="vueUI-radio-row flex space-between" role="radio" @click="radioHandler" v-else>
+    <span class="vueUI-radio-label" :class="isChecked?'is-checked':''">
+        <slot></slot>
+    </span>
+    <span class="vueUI-radio-input" :class="isChecked?'is-checked':''">
+        <!-- <radio class="vueUI-radio-self" v-model="radioValue"></radio> -->
     </span>
 </label>
 </template>
@@ -21,6 +29,7 @@ import emitter from '@/mixins/emit';
 export default class Radio extends Vue {
     @Prop([String,Number,Boolean]) readonly label;
     @Prop([String,Number,Boolean]) readonly value;
+    @Prop({type:String,default:'column'}) readonly type; // 单选框的排列类型： row, column
 
     // private isChecked: boolean = false;
     private _radioGroup: any  = null;
@@ -65,6 +74,7 @@ export default class Radio extends Vue {
                 (this as any).dispatch('RadioGroup','input',[this.label])
             }else{
                 this.$emit('input',this.label);
+                this.$emit('change',this.label);
             }
         }
     }

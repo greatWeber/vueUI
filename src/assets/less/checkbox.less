@@ -1,0 +1,47 @@
+.vueUI-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    color: #666;
+}
+
+.vueUI-checkbox-row {
+    display: flex;
+    padding: 0.2rem;
+
+    .vueUI-checkbox-span {
+        border: none;
+    }
+}
+
+.vueUI-checkbox-span {
+    width: 0.3rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.2rem;
+
+}
+
+.vueUI-checkbox-span.is-checked {
+    color: @baseColor;
+    border-color: @baseColor;
+    background: @baseColor;
+
+    .icon {
+        color: #fff;
+    }
+}
+
+.vueUI-checkbox-input {
+    opacity: 0;
+    display: none;
+}
+
+.vueUI-checkbox-label.is-checked {
+    color: @baseColor;
+}
+

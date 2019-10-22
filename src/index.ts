@@ -19,6 +19,8 @@ import formItem from './components/form/formItem.vue';
 import input from './components/input/index.vue';
 import radio from './components/radio/index.vue';
 import radioGroup from './components/radio/radioGroup.vue';
+import checkbox from './components/checkbox/index.vue';
+import checkboxGroup from './components/checkbox/checkboxGroup.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -47,6 +49,8 @@ const components ={
     input,
     radio,
     radioGroup,
+    checkbox,
+    checkboxGroup,
 };
 
 const version = '1.0.0';

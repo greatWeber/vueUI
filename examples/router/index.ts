@@ -106,8 +106,14 @@ const router = new Router({
         {
             path:'/radio',
             name:'radio',
-            meta:{title:'单选按钮'},
+            meta:{title:'单选框'},
             component: ()=>import('@ex/views/radio.vue') 
+        },
+        {
+            path:'/checkbox',
+            name:'checkbox',
+            meta:{title:'多选框'},
+            component: ()=>import('@ex/views/checkbox.vue') 
         }
     ]
 });
