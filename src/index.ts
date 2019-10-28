@@ -21,6 +21,7 @@ import radio from './components/radio/index.vue';
 import radioGroup from './components/radio/radioGroup.vue';
 import checkbox from './components/checkbox/index.vue';
 import checkboxGroup from './components/checkbox/checkboxGroup.vue';
+import uploader from './components/uploader/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -51,6 +52,7 @@ const components ={
     radioGroup,
     checkbox,
     checkboxGroup,
+    uploader,
 };
 
 const version = '1.0.0';

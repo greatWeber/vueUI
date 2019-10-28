@@ -114,6 +114,12 @@ const router = new Router({
             name:'checkbox',
             meta:{title:'多选框'},
             component: ()=>import('@ex/views/checkbox.vue') 
+        },
+        {
+            path:'/uploader',
+            name:'uploader',
+            meta:{title:'上传'},
+            component: ()=>import('@ex/views/uploader.vue') 
         }
     ]
 });
