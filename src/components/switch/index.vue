@@ -1,9 +1,9 @@
 <template>
 <div class="vueUI-switch-wrapper" @click="changeHandler">
-    <label class="vueUI-switch-label vueUI-switch-label--medium">
+    <label class="vueUI-switch-label vueUI-switch-label--medium" :style="{background:color}">
         <span class="vueUI-switch-span " :class="selected?'vueUI-switch-act':''"></span>
     </label>
-    <span class="vueUI-switch-text">开关</span>
+    <span class="vueUI-switch-text" v-if="label">{{label}}</span>
 </div>
 </template>
     
@@ -15,8 +15,10 @@ import emitter from '@/mixins/emit';
 })
 export default class Switchs extends Vue {
     @Prop(Boolean) readonly value;
+    @Prop(String) readonly color;
+    @Prop(String) readonly label;
 
-    private selected: boolean = false;
+    private selected: boolean = false ;
 
     @Watch('value')
     valueHandler(){

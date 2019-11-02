@@ -1,6 +1,7 @@
 <template>
 <div>
     <vu-switch></vu-switch>
+    <vu-switch color="#65cc18"></vu-switch>
 </div>
 </template>
     
