@@ -120,6 +120,12 @@ const router = new Router({
             name:'uploader',
             meta:{title:'上传'},
             component: ()=>import('@ex/views/uploader.vue') 
+        },
+        {
+            path:'/switch',
+            name:'switch',
+            meta:{title:'开关'},
+            component: ()=>import('@ex/views/switch.vue') 
         }
     ]
 });

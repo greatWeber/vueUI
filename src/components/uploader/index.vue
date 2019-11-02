@@ -19,9 +19,11 @@
     
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import emitter from '@/mixins/emit';
 
 @Component({
-    name:'Uploader'
+    name:'Uploader',
+     mixins:[emitter],
 })
 export default class Uploader extends Vue {
     @Prop(Array) readonly value;
@@ -36,6 +38,7 @@ export default class Uploader extends Vue {
     @Watch('value')
     valueHandler(){
         this.imgList = this.value;
+        (this as any).dispatch('FormItem','vueUI.form.change',[this.value]);
     }
 
     /**
