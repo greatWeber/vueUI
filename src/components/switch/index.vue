@@ -9,11 +9,11 @@
     
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-
+import emitter from '@/mixins/emit';
 @Component({
-    name:'Switch'
+    name:'Switchs'
 })
-export default class Switch extends Vue {
+export default class Switchs extends Vue {
     @Prop(Boolean) readonly value;
 
     private selected: boolean = false;
@@ -21,6 +21,7 @@ export default class Switch extends Vue {
     @Watch('value')
     valueHandler(){
         this.selected = this.value;
+        (this as any).dispatch('FormItem','vueUI.form.change',[this.value]);
     }
 
     private changeHandler(){

@@ -1,10 +1,10 @@
 <template>
 <div>
-    <vueUI-radio-group v-model="radio" @change="changeHandler">
+    <vu-radio-group v-model="radio" @change="changeHandler">
 
-        <vueUI-radio  label="1" type="row">单选按钮</vueUI-radio>
-        <vueUI-radio  label="2" type="row">单选按钮</vueUI-radio>
-    </vueUI-radio-group>
+        <vu-radio  label="1" type="row">单选按钮</vu-radio>
+        <vu-radio  label="2" type="row">单选按钮</vu-radio>
+    </vu-radio-group>
 </div>
 </template>
     

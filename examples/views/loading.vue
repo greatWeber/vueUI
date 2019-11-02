@@ -1,8 +1,8 @@
 <template>
 <div>
-    <vueUI-loading></vueUI-loading>
+    <vu-loading></vu-loading>
 
-    <vueUI-button @click="loadingHandler">点击加载</vueUI-button>
+    <vu-button @click="loadingHandler">点击加载</vu-button>
 </div>
 </template>
     

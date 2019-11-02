@@ -1,9 +1,9 @@
 <template>
 <div>
-    <vueUI-checkbox-group v-model="checkbox" @change="changeHandler">
-        <vueUI-checkbox label="1">js</vueUI-checkbox>
-        <vueUI-checkbox label="2">ts</vueUI-checkbox>
-    </vueUI-checkbox-group>
+    <vu-checkbox-group v-model="checkbox" @change="changeHandler">
+        <vu-checkbox label="1">js</vu-checkbox>
+        <vu-checkbox label="2">ts</vu-checkbox>
+    </vu-checkbox-group>
 </div>
 </template>
     

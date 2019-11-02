@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vueUI-switch></vueUI-switch>
+    <vu-switch></vu-switch>
 </div>
 </template>
     
@@ -8,7 +8,7 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
     
 @Component
-export default class Switch extends Vue {}
+export default class Switchs extends Vue {}
 </script>
     
 <style lang="less" scoped>

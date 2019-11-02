@@ -1,9 +1,9 @@
 <template>
 <div>
-    <vueUI-button @click="successHandler">成功提示</vueUI-button>
-    <vueUI-button @click="errorHandler">错误提示</vueUI-button>
-    <vueUI-button @click="infoHandler">信息提示</vueUI-button>
-    <vueUI-button @click="textHandler">普通提示</vueUI-button>
+    <vu-button @click="successHandler">成功提示</vu-button>
+    <vu-button @click="errorHandler">错误提示</vu-button>
+    <vu-button @click="infoHandler">信息提示</vu-button>
+    <vu-button @click="textHandler">普通提示</vu-button>
 </div>
 </template>
     

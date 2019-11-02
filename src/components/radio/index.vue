@@ -69,7 +69,7 @@ export default class Radio extends Vue {
     private radioHandler(){
         if (!this.isChecked){
             // this.isChecked = !this.isChecked;
-            
+
             if (this.isGroup){
                 (this as any).dispatch('RadioGroup','input',[this.label])
             }else{

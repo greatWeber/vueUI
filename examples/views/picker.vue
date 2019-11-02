@@ -1,19 +1,19 @@
 <template>
 <div>
     <p>
-        <vueUI-picker :data="data1" @success="successCb">数组选择器</vueUI-picker>
+        <vu-picker :data="data1" @success="successCb">数组选择器</vu-picker>
     </p>
     <p>
-        <vueUI-picker :data="data2" range-key="text" @success="successCb">对象数组选择器</vueUI-picker>
+        <vu-picker :data="data2" range-key="text" @success="successCb">对象数组选择器</vu-picker>
     </p>
     <p>
-        <vueUI-picker mode="multiSelector" :data="data3"  @success="successCb">多列数组选择器</vueUI-picker>
+        <vu-picker mode="multiSelector" :data="data3"  @success="successCb">多列数组选择器</vu-picker>
     </p>
     <p>
-        <vueUI-picker mode="region"  @success="successCb">地址选择器</vueUI-picker>
+        <vu-picker mode="region"  @success="successCb">地址选择器</vu-picker>
     </p>
     <p>
-        <vueUI-picker mode="date"   @success="successCb">日期选择器</vueUI-picker>
+        <vu-picker mode="date"   @success="successCb">日期选择器</vu-picker>
     </p>
 </div>
 </template>

@@ -2,12 +2,12 @@
 <div>
 <p style="height:2rem; background:red;"></p>
 <div style="height:5rem;overflow:scroll">
-    <vueUI-loadmore ref="loadmore" 
+    <vu-loadmore ref="loadmore" 
     @refresh="refreshHandler" 
     @loadmore="loadmoreHandler"
     :allLoad="allLoad">
-        <vueUI-cell v-for="(item,i) in data" :key="i" :title="item"></vueUI-cell>
-    </vueUI-loadmore>
+        <vu-cell v-for="(item,i) in data" :key="i" :title="item"></vu-cell>
+    </vu-loadmore>
 </div>
 </div>
 </template>

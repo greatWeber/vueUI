@@ -1,18 +1,18 @@
 <template>
 <ul>
     <li class="list-item">
-        <vueUI-badge><span class="text">我的订单</span></vueUI-badge> 
+        <vu-badge><span class="text">我的订单</span></vu-badge> 
     </li>
     <li class="list-item">
-        <vueUI-badge>
-            <vueUI-button class="btn" size="mini">按钮</vueUI-button>
-        </vueUI-badge> 
+        <vu-badge>
+            <vu-button class="btn" size="mini">按钮</vu-button>
+        </vu-badge> 
     </li>
     <li class="list-item">
-        <vueUI-badge type="number" num="99"><span class="text">我的订单</span></vueUI-badge> 
+        <vu-badge type="number" num="99"><span class="text">我的订单</span></vu-badge> 
     </li>
     <li class="list-item">
-        <vueUI-badge type="number" num="100"><vueUI-button class="btn" size="mini">订单</vueUI-button></vueUI-badge> 
+        <vu-badge type="number" num="100"><vu-button class="btn" size="mini">订单</vu-button></vu-badge> 
     </li>
 </ul>
 </template>

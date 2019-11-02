@@ -1,8 +1,8 @@
 <template>
 <div>
-    <vueUI-swiper :data="imgArr">
+    <vu-swiper :data="imgArr">
         <span slot-scope="swiper">{{swiper}}</span>
-    </vueUI-swiper>
+    </vu-swiper>
 </div>
 </template>
     

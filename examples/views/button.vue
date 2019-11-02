@@ -1,10 +1,10 @@
 <template>
 <div>
-    <vueUI-button class="btn">按钮</vueUI-button>
-    <vueUI-button class="btn" size="small">按钮</vueUI-button>
-    <vueUI-button class="btn" size="medium" @click="clickHandler">按钮</vueUI-button>
-    <vueUI-button class="btn" size="medium" round loading @click="clickHandler">按钮</vueUI-button>
-    <vueUI-button class="btn" size="medium" round plain>按钮</vueUI-button> 
+    <vu-button class="btn">按钮</vu-button>
+    <vu-button class="btn" size="small">按钮</vu-button>
+    <vu-button class="btn" size="medium" @click="clickHandler">按钮</vu-button>
+    <vu-button class="btn" size="medium" round loading @click="clickHandler">按钮</vu-button>
+    <vu-button class="btn" size="medium" round plain>按钮</vu-button> 
 </div>
 </template>
     

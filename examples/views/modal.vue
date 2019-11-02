@@ -1,8 +1,8 @@
 <template>
 <div>
-    <vueUI-button @click="messageHandler">点击打开message</vueUI-button>
-    <vueUI-button @click="inputHandler">点击打开input</vueUI-button>
-    <vueUI-button @click="disposeHandler">点击打开配置(dispose)</vueUI-button>
+    <vu-button @click="messageHandler">点击打开message</vu-button>
+    <vu-button @click="inputHandler">点击打开input</vu-button>
+    <vu-button @click="disposeHandler">点击打开配置(dispose)</vu-button>
 
 </div>
 </template>

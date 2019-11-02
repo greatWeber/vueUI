@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vueUI-tab :tabs="tabs" tabKey="title" @tab-click="clickHandler"></vueUI-tab>
+    <vu-tab :tabs="tabs" tabKey="title" @tab-click="clickHandler"></vu-tab>
 </div>
 </template>
     

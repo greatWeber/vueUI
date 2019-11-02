@@ -1,16 +1,16 @@
 <template>
 <div>
-    <vueUI-form :model="formData" :rules="rules">
-        <vueUI-formitem prop="name" label="名字">
-            <vueUI-input type="text" v-model="formData.name" placeholder="请输入名字"></vueUI-input>
-        </vueUI-formitem>
-        <vueUI-formitem prop="age" label="年龄">
-            <vueUI-input type="number" v-model="formData.age"></vueUI-input>
-        </vueUI-formitem>
-        <vueUI-formitem label="留言">
-            <vueUI-input type="textarea" v-model="formData.remark"></vueUI-input>
-        </vueUI-formitem>
-    </vueUI-form>
+    <vu-form :model="formData" :rules="rules">
+        <vu-formitem prop="name" label="名字">
+            <vu-input type="text" v-model="formData.name" placeholder="请输入名字"></vu-input>
+        </vu-formitem>
+        <vu-formitem prop="age" label="年龄">
+            <vu-input type="number" v-model="formData.age"></vu-input>
+        </vu-formitem>
+        <vu-formitem label="留言">
+            <vu-input type="textarea" v-model="formData.remark"></vu-input>
+        </vu-formitem>
+    </vu-form>
 </div>
 </template>
     

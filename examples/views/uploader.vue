@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vueUI-uploader @uploaderHandler="uploaderHandler" v-model="imgList"></vueUI-uploader>
+    <vu-uploader @uploaderHandler="uploaderHandler" v-model="imgList"></vu-uploader>
 </div>
 </template>
     
