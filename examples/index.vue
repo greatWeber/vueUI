@@ -1,13 +1,13 @@
 <template>
 <div>
-    <vueUI-cell 
+    <vu-cell 
         v-for="(item,i) in routes"
         :key="i"
         :title="item.name"
         :to="{name:item.name}"
         :arrow="true"
         :value="item.meta.title"
-    ></vueUI-cell>
+    ></vu-cell>
 </div>
 </template>
     

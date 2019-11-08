@@ -126,6 +126,12 @@ const router = new Router({
             name:'switch',
             meta:{title:'开关'},
             component: ()=>import('@ex/views/switch.vue') 
+        },
+        {
+            path:'/stepper',
+            name:'stepper',
+            meta:{title:'计步器'},
+            component: ()=>import('@ex/views/stepper.vue') 
         }
     ]
 });

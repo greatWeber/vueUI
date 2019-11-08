@@ -23,6 +23,7 @@ import checkbox from './components/checkbox/index.vue';
 import checkboxGroup from './components/checkbox/checkboxGroup.vue';
 import uploader from './components/uploader/index.vue';
 import Switch from './components/switch/index.vue';
+import stepper from './components/stepper/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -55,8 +56,9 @@ const components ={
     checkboxGroup,
     uploader,
     Switch,
+    stepper,
 };
-console.log(components['Switch'])
+
 const version = '1.0.0';
 const install = (Vue,config={})=>{
     Vue.prototype.vueUIConfig = config;

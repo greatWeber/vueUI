@@ -125,7 +125,7 @@ export default class Loadmore extends Vue {
 
     }
      /**
-     * 加载完成后手动调用该方法关闭刷新
+     *  加载完成后手动调用该方法关闭刷新
      */
     private refreshEnd():void{
         let _this = this;
