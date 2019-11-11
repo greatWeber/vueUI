@@ -24,6 +24,7 @@ import checkboxGroup from './components/checkbox/checkboxGroup.vue';
 import uploader from './components/uploader/index.vue';
 import Switch from './components/switch/index.vue';
 import stepper from './components/stepper/index.vue';
+import search from './components/search/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -57,6 +58,7 @@ const components ={
     uploader,
     Switch,
     stepper,
+    search,
 };
 
 const version = '1.0.0';
