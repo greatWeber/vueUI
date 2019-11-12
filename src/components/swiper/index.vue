@@ -1,5 +1,5 @@
 <template>
-<div :class="['vueUI-swiper', Class]" ref="swiper" 
+<div :class="['vueUI-swiper']" ref="swiper" 
     @touchstart="touchStartHandler"
     @touchmove="touchMoveHandler"
     @touchend="touchEndHandler"
@@ -35,7 +35,7 @@ export default class Swiper extends Vue {
     @Prop({type:Boolean,default:false}) readonly auto;  // 是否自动滚动
     @Prop({type:Number,default:2000}) readonly time; // 滚动的间隔时间
     @Prop({type:Boolean,default:true}) readonly showPoint; // 是否显示小圆点
-    @Prop(String) readonly Class; // 自定义样式class
+    // @Prop(String) readonly Class; // 自定义样式class 
     @Prop({type:String,default:'cover'}) readonly fit; // 图片裁剪种类
 
     private timer: any = null;

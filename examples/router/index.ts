@@ -138,6 +138,18 @@ const router = new Router({
             name:'search',
             meta:{title:'搜索框'},
             component: ()=>import('@ex/views/search.vue') 
+        },
+        {
+            path:'/tabbar',
+            name:'tabbar',
+            meta:{title:'底部导航'},
+            component: ()=>import('@ex/views/tabbar.vue') 
+        },
+        {
+            path:'/steps',
+            name:'steps',
+            meta:{title:'步骤'},
+            component: ()=>import('@ex/views/steps.vue') 
         }
     ]
 });
