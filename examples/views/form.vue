@@ -1,15 +1,15 @@
 <template>
 <div>
     <vu-form :model="formData" :rules="rules">
-        <vu-formitem prop="name" label="名字">
+        <vu-form-item prop="name" label="名字">
             <vu-input type="text" v-model="formData.name" placeholder="请输入名字"></vu-input>
-        </vu-formitem>
-        <vu-formitem prop="age" label="年龄">
+        </vu-form-item>
+        <vu-form-item prop="age" label="年龄">
             <vu-input type="number" v-model="formData.age"></vu-input>
-        </vu-formitem>
-        <vu-formitem label="留言">
+        </vu-form-item>
+        <vu-form-item label="留言">
             <vu-input type="textarea" v-model="formData.remark"></vu-input>
-        </vu-formitem>
+        </vu-form-item>
     </vu-form>
 </div>
 </template>

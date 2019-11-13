@@ -1,6 +1,7 @@
 <template>
 <div>
     <vu-steps :list="list" :status="status"></vu-steps>
+    <vu-steps :list="list" :status="status" dir="vertical"></vu-steps>
 </div>
 </template>
     

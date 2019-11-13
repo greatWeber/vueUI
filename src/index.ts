@@ -6,7 +6,7 @@ import utils from '@/libs/utils';
 
 import button from './components/button/index.vue';
 import picker from './components/picker/index.vue';
-import actionSheet from './components/actionSheet/index.vue';
+import actionsheet from './components/actionSheet/index.vue';
 import badge from './components/badge/index.vue';
 import cell from './components/cell/index.vue';
 import loading from './components/loading/loading.vue';
@@ -27,6 +27,7 @@ import stepper from './components/stepper/index.vue';
 import search from './components/search/index.vue';
 import tabbar from './components/tabbar/index.vue';
 import steps from './components/steps/index.vue';
+import cellG from './components/cellG/index.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -42,7 +43,7 @@ console.log('install start');
 const components ={
     button,
     picker,
-    actionSheet,
+    actionsheet,
     badge,
     cell,
     loading,
@@ -63,6 +64,7 @@ const components ={
     search,
     tabbar,
     steps,
+    cellG,
 };
 
 const version = '1.0.0';

@@ -55,7 +55,14 @@ export default class Steps extends Vue {
     .steps-item-vertical {
         position: relative;
         color: #666;
-        min-height: 1rem;
+        min-height: 2rem;
+        padding-left: 0.5rem;
+
+        .dot {
+            top: -0.15rem;
+            left: -0.1rem;
+            transform: translate(0,0.2rem)
+        }
 
         &:last-child {
             &::after{
@@ -68,7 +75,7 @@ export default class Steps extends Vue {
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
+            top: 0.2rem;
             width: 5px;
             height: 100%;
             background: #ccc;
