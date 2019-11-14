@@ -1,6 +1,6 @@
 <template>
-<label class="vueUI-checkbox" role="checkbox" v-if="type==='column'">
-    <span class="vueUI-checkbox-span i-b v-m" :class="model?'is-checked':''">
+<label class="vueUI-checkbox " role="checkbox" v-if="type==='column'">
+    <span class="vueUI-checkbox-span i-b v-m " :class="model?'is-checked':''">
         <input class="vueUI-checkbox-input" type="checkbox" v-model="model">
         <i class="icon icon-successful" v-show="model"></i>
     </span>
@@ -8,11 +8,11 @@
         <slot></slot>
     </div>
 </label>
-<label class="vueUI-checkbox-row space-between" role="checkbox" v-else>
+<label class="vueUI-checkbox-row space-between border-bottom align-center" role="checkbox" v-else>
     <div class="vueUI-checkbox-label i-b v-m" :class="model?'is-checked':''">
         <slot></slot>
     </div>
-    <span class="vueUI-checkbox-span i-b v-m" :class="model?'is-checked':''">
+    <span class="vueUI-checkbox-span i-b v-m " :class="model?'is-checked':''">
         <input class="vueUI-checkbox-input" type="checkbox" v-model="model">
         <i class="icon icon-successful" v-show="model"></i>
     </span>

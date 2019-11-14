@@ -14,6 +14,7 @@
                 :show.sync="showMask" 
                 :data="data"
                 :rangeKey="rangeKey"
+                @success="successHandler"
                 v-on="$listeners"></multi-picker>
         </template>
         <template v-else-if="mode=='region'">
@@ -21,6 +22,7 @@
             <region-picker 
                 v-show="showMask" 
                 :show.sync="showMask" 
+                @success="successHandler"
                 v-on="$listeners"></region-picker>
         </template>
         <template v-else-if="mode=='date'">
@@ -28,6 +30,7 @@
             <date-picker 
                 v-show="showMask" 
                 :show.sync="showMask" 
+                @success="successHandler"
                 v-on="$listeners"></date-picker>
         </template>
         <template v-else>
@@ -37,6 +40,7 @@
             :show.sync="showMask" 
             :pickerArray="data"
             :rangeKey="rangeKey"
+            @success="successHandler"
             v-on="$listeners"></select-picker>
         </template>
 
@@ -67,9 +71,14 @@ export default class Picker extends Vue {
 
     @Prop({type:[String,Number],default:1999}) readonly startYear; // 时间选择器开始
     @Prop({type:[String,Number],default:2030}) readonly endYear; // 时间选择器结束
+    @Prop([String,Number,Object,Array]) readonly value; 
 
     // data
     private showMask: boolean = false;// 是否显示遮罩
+
+    private successHandler(val){
+        this.$emit('input',val);
+    }
 
 }
 </script>

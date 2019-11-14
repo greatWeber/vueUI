@@ -26,8 +26,12 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import Touch from '@/libs/touch';
 import utils from '@/libs/utils';
+import emitter from '@/mixins/emit';
 
-@Component({name:'SelectorPicker'})
+@Component({
+    name:'SelectorPicker',
+    mixins:[emitter],
+    })
 export default class SelectorPicker extends Vue {
 
     @Prop(Boolean) readonly show;
@@ -146,6 +150,7 @@ export default class SelectorPicker extends Vue {
     private sureHandler():void {
         this.$emit('update:show',false);
         this.$emit('success',this.pickerArray[this.unitIndex]);
+        (this as any).dispatch('FormItem','vueUI.form.change',[this.pickerArray[this.unitIndex]]);
     }
 
 }

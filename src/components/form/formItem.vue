@@ -1,6 +1,7 @@
 <template>
 <div class="vueUI-form-item flex">
     <slot name="label">
+        <span class="required" v-if="required">*</span>
         <label v-show="label" class="vueUI-form-label" :for="labelFor">{{label}}</label>
     </slot>
     <div class="vueUI-form-content">
@@ -81,6 +82,17 @@ export default class FormItem extends Vue {
         return model[this.prop];
     }
 
+    get required(){
+        const rules = this.getRules();
+        let isBool = false;
+        rules.forEach(rule=>{
+            if(rule.required){
+                isBool = true;
+            }
+        })
+        return isBool;
+    }
+
     // methods
     /**
      * 获取父级表单的验证规则数组
@@ -156,34 +168,5 @@ export default class FormItem extends Vue {
 </script>
     
 <style lang="less" scoped>
-.vueUI-form-item {
-    // width: 100%;
-    padding: 0 0.2rem;
-    // height: 0.8rem;
-    line-height: 0.8rem;
-    text-align: left;
-    border-bottom: 0.01rem solid #eee;
-}
-.vueUI-form-label {
-    font-size: 0.3rem;
-    min-width: 1rem;
-    max-width: 3rem;
-    padding-right: 0.2rem;
-    font-weight: bold;
-}
-
-.vueUI-form-content {
-    flex: 5;
-}
-.vueUI-form-error {
-    padding: 0.2rem;
-    line-height: 1;
-    font-size: 12px;
-    color: red;
-
-    .icon {
-        font-size: 12px;
-    }
-}
 
 </style>
