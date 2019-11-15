@@ -45,7 +45,7 @@ export default class Form extends Vue {
      * 验证
      * 通过调用各个字段的validate方法验证每个字段自身
      */
-    private validate(): Promise<any> {
+    public validate(): Promise<any> {
         return new Promise((resolve,reject)=>{
             let valid = true; // 验证是否通过
             let count = 0; // 验证的次数
@@ -57,13 +57,14 @@ export default class Form extends Vue {
 
             let invalidFields = {}; // 验证过的字段集合
             this.fields.forEach(field => {
-                field.validate('').then(({message,field})=>{
-                    if (message){
+                field.validate('').then((data)=>{
+                    if (data.validateMessage){
                         valid = false; // 验证不通过
+                        resolve(data.validateMessage);
                     }
                     invalidFields = Object.assign({},invalidFields,field);
                     if (++count === this.fields.length){
-                        resolve({message,invalidFields});
+                        resolve(true);
                     }
                 })
             })

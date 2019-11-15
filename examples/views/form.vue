@@ -1,6 +1,6 @@
 <template>
 <div>
-    <vu-form :model="formData" :rules="rules">
+    <vu-form :model="formData" :rules="rules" ref="form">
         <vu-form-item prop="name" label="名字">
             <vu-input type="text" v-model="formData.name" placeholder="请输入名字"></vu-input>
         </vu-form-item>
@@ -22,11 +22,18 @@
             </vu-checkbox-group>
         </vu-form-item>
         <vu-form-item prop="birthday" label="生日">
-            <vu-picker mode="date"   @success="successCb">请选择日期</vu-picker>
+            <vu-picker mode="date"  @success="successHandler">{{formData.birthday||"请选择日期"}}</vu-picker>
+        </vu-form-item>
+        <vu-form-item prop="girlFriend" label="是否有女朋友">
+            <vu-switch v-model="formData.girlFriend" ></vu-switch>
+        </vu-form-item>
+        <vu-form-item prop="num" label="数量">
+            <vu-stepper v-model="formData.num"></vu-stepper>
         </vu-form-item>
         <vu-form-item label="留言">
             <vu-input type="textarea" v-model="formData.remark" placeholder="请输入留言"></vu-input>
         </vu-form-item>
+        <vu-button class="btn" size="medium" round type="primary" @click="submitHandler">提 交</vu-button>
     </vu-form>
 </div>
 </template>
@@ -34,25 +41,60 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+interface formData {
+    name: string,
+    age: number,
+    sex: number,
+    hobby: Array<string>,
+    remark: string,
+    birthday: string,
+    girlFriend: boolean,
+    num: number,
+}
+
 @Component
 export default class Form extends Vue {
-    private formData: Object = {
+    private formData: formData = {
         name:'',
         age:0,
         sex:1,
         hobby:[],
         remark:'',
-
+        birthday:'',
+        girlFriend: false,
+        num: 1
     };
 
     private rules: Object = {
         name: [{required:true,message:'请填写名称',trigger:'blur'}],
         age: [{required:true,message:'请填写年龄',trigger:'blur'}],
         sex:[{required:true,message:'请选择性别',trigger:'change'}],
-        hobby:[{required:true,message:'请选择爱好',trigger:'change'}]
+        hobby:[{required:true,message:'请选择爱好',trigger:'change'}],
+        birthday:[{required:true,message:'请选择生日',trigger:'change'}],
+        girlFriend:[{required:true,message:'是否有女朋友',trigger:'change'}],
+        num:[{required:true,message:'选择数量',trigger:'change'}],
+    };
+
+    private successHandler(val){
+        console.log(val)
+        this.formData.birthday = val.join('-');
+    }
+
+    private submitHandler(){
+        (this.$refs.form as any).validate().then(data=>{
+            console.log(data);
+            if(data){
+                (this as any).$toast.error(data);
+                return false;
+            }
+        });
+        return false;
     }
 }
 </script>
     
 <style lang="less" scoped>
+.btn {
+    margin: 0.2rem auto;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
 <button 
     :disabled="disabled"
-    @click="handleClick"
+    @click.prevent="handleClick"
     :class="[
         'vueUI-button',
         'vueUI-ripple',
@@ -27,7 +27,7 @@ export default class Button extends Vue {
     @Prop(Boolean) readonly plain?: boolean;
     @Prop(Boolean) readonly loading?: boolean;
     @Prop({type:String,default:'mini'}) readonly size?: string; // mini, small, medium
-    @Prop({type:String,default:''}) readonly type?: string;
+    @Prop({type:String,default:''}) readonly type?: string; // primary, success, info, warning, danger
 
     // computed : 是否禁用按钮
     get disabled(){

@@ -14,7 +14,7 @@
                 :show.sync="showMask" 
                 :data="data"
                 :rangeKey="rangeKey"
-                @success="successHandler"
+           
                 v-on="$listeners"></multi-picker>
         </template>
         <template v-else-if="mode=='region'">
@@ -22,7 +22,7 @@
             <region-picker 
                 v-show="showMask" 
                 :show.sync="showMask" 
-                @success="successHandler"
+             
                 v-on="$listeners"></region-picker>
         </template>
         <template v-else-if="mode=='date'">
@@ -30,7 +30,7 @@
             <date-picker 
                 v-show="showMask" 
                 :show.sync="showMask" 
-                @success="successHandler"
+            
                 v-on="$listeners"></date-picker>
         </template>
         <template v-else>
@@ -40,11 +40,11 @@
             :show.sync="showMask" 
             :pickerArray="data"
             :rangeKey="rangeKey"
-            @success="successHandler"
+ 
             v-on="$listeners"></select-picker>
         </template>
 
-    </transition>
+    </transition> 
 </section>
 </template>
     

@@ -15,7 +15,8 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import emitter from '@/mixins/emit';
 
 @Component({
-    name:'Stepper'
+    name:'Stepper',
+    mixins:[emitter]
 })
 export default class Stepper extends Vue {
     @Prop(Number) readonly value;

@@ -1,8 +1,11 @@
 import { Component, Vue, Prop, Watch, Mixins } from 'vue-property-decorator';
 import utils from '@/libs/utils';
 import Touch from '@/libs/touch';
+import emitter from '@/mixins/emit';
 
-@Component
+@Component({
+    mixins:[emitter],
+})
 export default class pickerMixin extends Vue {
     @Prop(Boolean) readonly show;
 
@@ -85,5 +88,6 @@ export default class pickerMixin extends Vue {
             value.push(picker[this.unitIndexs[i]])
         })
         this.$emit('success',value );
+        (this as any).dispatch('FormItem','vueUI.form.change',[value]);
     }
 }
