@@ -66,10 +66,11 @@ export default class pickerMixin extends Vue {
         }else if (this.lastYs[index]<0&&Math.abs(this.lastYs[index])>Math.abs((maxLen)*this.unitHeight)){
 
             current = -(this.lens[index]-3);
-        }else if (Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<saleLen&&this.unitIndexs[index]<=maxLen){
+        }else if (endY<0&&Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen-1)*this.unitHeight)&&maxLen<saleLen&&this.unitIndexs[index]<=maxLen){
 
             current = 3- maxLen;
         }
+        console.log(Math.abs(this.lastYs[index]),current)
         let offsetY = current* this.unitHeight;
         this.lastYs[index] = offsetY;
         this.unitIndexs[index] = 2 - current;

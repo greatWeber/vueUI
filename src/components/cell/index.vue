@@ -29,7 +29,7 @@ export default class Cell extends Vue {
         if (!this.to)return;
         setTimeout(()=>{
             (this as any).$router.push(this.to);
-        },300)
+        },200)
     }
 }
 </script>

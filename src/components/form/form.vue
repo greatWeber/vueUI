@@ -60,7 +60,7 @@ export default class Form extends Vue {
                 field.validate('').then((data)=>{
                     if (data.validateMessage){
                         valid = false; // 验证不通过
-                        resolve(data.validateMessage);
+                        resolve(data);
                     }
                     invalidFields = Object.assign({},invalidFields,field);
                     if (++count === this.fields.length){

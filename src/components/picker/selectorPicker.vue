@@ -134,7 +134,7 @@ export default class SelectorPicker extends Vue {
             current = 2;
         }else if (this.lastY<0&&Math.abs(this.lastY)>Math.abs((maxLen)*this.unitHeight)){
             current = -(this.len-3);
-        }else if (Math.abs(this.lastY)+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<saleLen&&this.unitIndex<=maxLen){
+        }else if (Math.abs(this.lastY)+2*this.unitHeight>Math.abs((maxLen-1)*this.unitHeight)&&maxLen<saleLen&&this.unitIndex<=maxLen){
             current = 3- maxLen;
         }
         // console.log(current,this.lastY,middleHeight,max,min)

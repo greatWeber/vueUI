@@ -94,12 +94,12 @@ export default class Form extends Vue {
     private submitHandler(){
         (this.$refs.form as any).validate().then(data=>{
             console.log(data);
-            if(data){
-                (this as any).$toast.error(data);
+            if(data.validateMessage){
+                (this as any).$toast.error(data.validateMessage);
                 return false;
             }
         });
-        return false;
+        return true;
     }
 }
 </script>

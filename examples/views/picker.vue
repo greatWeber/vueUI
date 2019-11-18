@@ -59,7 +59,7 @@ export default class Picker extends Vue {
     ];
     private data3:Array<any> = [
         ['js','vue','ts'],
-        ['html','css','less']
+        ['html','css','less','vue','ts']
     ];
 
     private picker1 :string = '';
