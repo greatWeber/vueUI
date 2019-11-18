@@ -14,6 +14,13 @@ export default class App extends Vue {
 </script>
   
 <style lang="less" >
+.title {
+    font-size: 0.38rem;
+    color: #666;
+    line-height: 2;
+    padding-left: 0.2rem;
+    background: #f5f5f5;
+}
 body {
   background: #f5f5f5;
 }

@@ -105,6 +105,7 @@ export default class SelectorPicker extends Vue {
          * 1. 判断最后落在哪个格子上
          * 2. 安全范围判断，头部不能超过(2*height);尾部不能超过-(count-3*height);
          * 3. 记得当前格子对应的数据索引，由于一列有5个格子，从0开始算，中间是2
+         * 4. 安全判断写的过于复杂，有点懵逼o((⊙﹏⊙))o
          */
         this.lastY += endY;
 
@@ -120,19 +121,23 @@ export default class SelectorPicker extends Vue {
         }
         // 安全判断
         let maxLen = 0;
-        if (this.len<3){ // 当数据的长度<3的时候要特殊判断
+        let saleLen = 0;
+        if (this.len<=3){ // 当数据的长度<3的时候要特殊判断
             maxLen = this.len;
+            saleLen = 4;
         }else {
             maxLen = this.len-3;
+            saleLen = 2;
         }
 
         if (this.lastY>2*this.unitHeight){
             current = 2;
         }else if (this.lastY<0&&Math.abs(this.lastY)>Math.abs((maxLen)*this.unitHeight)){
             current = -(this.len-3);
-        }else if (Math.abs(this.lastY)+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<3&&this.unitIndex<=maxLen){
+        }else if (Math.abs(this.lastY)+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<saleLen&&this.unitIndex<=maxLen){
             current = 3- maxLen;
         }
+        // console.log(current,this.lastY,middleHeight,max,min)
         let offsetY = current* this.unitHeight;
         this.lastY = offsetY;
         this.unitIndex = 2 - current;

@@ -67,13 +67,24 @@ export default class Form extends Vue {
 
     private rules: Object = {
         name: [{required:true,message:'请填写名称',trigger:'blur'}],
-        age: [{required:true,message:'请填写年龄',trigger:'blur'}],
+        age: [{required:true,validator:this.validateAge,trigger:'blur'}],
         sex:[{required:true,message:'请选择性别',trigger:'change'}],
         hobby:[{required:true,message:'请选择爱好',trigger:'change'}],
         birthday:[{required:true,message:'请选择生日',trigger:'change'}],
         girlFriend:[{required:true,message:'是否有女朋友',trigger:'change'}],
         num:[{required:true,message:'选择数量',trigger:'change'}],
     };
+
+    private validateAge(rule,value,callback){
+        //  自定义验证规则
+        if(!value){
+            return callback(new Error('年龄不能为空'));
+        }
+        if(value<18){
+            return callback(new Error('没有满18岁哦!'));
+        }
+        return callback();
+    }
 
     private successHandler(val){
         console.log(val)

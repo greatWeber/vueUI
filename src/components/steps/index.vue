@@ -1,9 +1,9 @@
 <template>
 <section :class="['steps-wrapper', dir==='horizontal'?'flex':'']">
     <div :class="[dir==='horizontal'?'steps-item-horizontal':'steps-item-vertical',status>=i?'steps-act':'',status-1==i?'line-act':'']" v-for="(item,i) in list" :key="i">
-        <span class="dot"></span>
-        <p class="title">{{item.title}}</p>
-        <p class="info">{{item.info}}</p>
+        <span class="steps-dot"></span>
+        <p class="steps-title">{{item.title}}</p>
+        <p class="steps-info">{{item.info}}</p>
     </div>
 </section>
 </template>
@@ -58,7 +58,7 @@ export default class Steps extends Vue {
         min-height: 2rem;
         padding-left: 0.5rem;
 
-        .dot {
+        .steps-dot {
             top: -0.15rem;
             left: -0.1rem;
             transform: translate(0,0.2rem)
@@ -84,7 +84,7 @@ export default class Steps extends Vue {
 
     .steps-act {
         color: #539BED;
-        .dot {
+        .steps-dot {
             background: #539BED;
         }
     }
@@ -95,7 +95,7 @@ export default class Steps extends Vue {
         }
     }
 
-    .dot {
+    .steps-dot {
         position: absolute;
         left: 50%;
         top: 0;
@@ -107,11 +107,11 @@ export default class Steps extends Vue {
         background: #ccc;
     }
 
-    .title {
+    .steps-title {
         font-size: 14px;
     }
 
-    .info {
+    .steps-info {
         font-size: 12px;
     }
 }

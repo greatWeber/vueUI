@@ -1,6 +1,7 @@
 
 import Vue from 'vue';
 import '@/assets/less/index.less';
+import '@/assets/font/iconfont.less';
 import {remDesign} from '@/libs/rem';
 import utils from '@/libs/utils';
 

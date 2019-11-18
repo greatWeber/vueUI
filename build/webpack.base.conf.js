@@ -44,12 +44,11 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src')]
       },
-      // {
-      //   test: /\.ts$/,
-      //   exclude: /node_modules/,
-      //   enforce: 'pre',
-      //   loader: 'tslint-loader'
-      // },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use:['style-loader','css-loader']
+      },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',

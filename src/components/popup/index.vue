@@ -6,7 +6,7 @@
             @click="closeHandler"
             ></span>
         <div class="vueUI-popup-content">
-            
+            <slot></slot>
         </div>
     </div>
 </transition>

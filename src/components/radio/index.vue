@@ -56,7 +56,7 @@ export default class Radio extends Vue {
     }
 
     get isChecked(){
-        if (this.model === this.label){
+        if (this.model == this.label){
             return true;
         }else{
             return false;

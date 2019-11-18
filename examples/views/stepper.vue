@@ -1,8 +1,14 @@
 <template>
 <div>
+    <h2 class="title">normal type</h2>
     <div class="flex space-between" style="padding: 0.2rem;">
         <span>计步器</span>
         <vu-stepper v-model="num"></vu-stepper>
+    </div>
+    <h2 class="title">simple type</h2>
+    <div class="flex space-between" style="padding: 0.2rem;">
+        <span>计步器</span>
+        <vu-stepper v-model="num" type="simple"></vu-stepper>
     </div>
 </div>
 </template>
@@ -17,4 +23,5 @@ export default class Stepper extends Vue {
 </script>
     
 <style lang="less" scoped>
+
 </style>

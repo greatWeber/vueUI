@@ -51,10 +51,13 @@ export default class pickerMixin extends Vue {
         }
         // 安全判断
         let maxLen = 0;
-        if (this.lens[index]<3){
+        let saleLen = 0;
+        if (this.lens[index]<=3){
             maxLen = this.lens[index];
+            saleLen = 4;
         }else {
             maxLen = this.lens[index]-3;
+            saleLen = 2;
         }
 
         if (this.lastYs[index]>2*this.unitHeight){
@@ -63,7 +66,7 @@ export default class pickerMixin extends Vue {
         }else if (this.lastYs[index]<0&&Math.abs(this.lastYs[index])>Math.abs((maxLen)*this.unitHeight)){
 
             current = -(this.lens[index]-3);
-        }else if (Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<3&&this.unitIndexs[index]<=maxLen){
+        }else if (Math.abs(this.lastYs[index])+2*this.unitHeight>Math.abs((maxLen)*this.unitHeight)&&maxLen<saleLen&&this.unitIndexs[index]<=maxLen){
 
             current = 3- maxLen;
         }

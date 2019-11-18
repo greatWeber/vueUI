@@ -1,8 +1,14 @@
 <template>
 <div>
-    <vu-button @click="messageHandler">点击打开message</vu-button>
-    <vu-button @click="inputHandler">点击打开input</vu-button>
-    <vu-button @click="disposeHandler">点击打开配置(dispose)</vu-button>
+    <p class="cell">
+        <vu-button @click="messageHandler">点击打开message</vu-button>
+    </p>
+    <p class="cell">
+        <vu-button @click="inputHandler">点击打开input</vu-button>
+    </p>
+    <p class="cell">
+        <vu-button @click="disposeHandler">点击打开配置(dispose)</vu-button>
+    </p>
 
 </div>
 </template>
@@ -46,4 +52,7 @@ export default class Modal extends Vue {
 </script>
     
 <style lang="less" scoped>
+.cell {
+    padding: 0.2rem;
+}
 </style>

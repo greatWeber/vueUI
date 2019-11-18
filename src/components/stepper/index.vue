@@ -1,11 +1,11 @@
 <template>
-<div class="stepper-wrapper">
+<div :class="[type==='normal'?'stepper-wrapper--normal':'stepper-wrapper--simple']">
     <p class="stepper-reduce i-b v-m" @click="reduceHandler">
-        <span class="icon icon-reduce1"></span>
+        <span :class="['icon', type==='normal'?'icon-reduce1':'icon-reduce']"></span>
     </p>
     <input type="number" v-model="inputValue" class="stepper-input v-m" @change="changeHandler">
     <p class="stepper-add i-b v-m" @click="addHandler">
-        <span class="icon icon-plus"></span>
+        <span :class="['icon' ,type==='normal'?'icon-plus':'icon-add']"></span>
     </p>
 </div>
 </template>
@@ -22,6 +22,7 @@ export default class Stepper extends Vue {
     @Prop(Number) readonly value;
     @Prop({type:Number,default:1}) readonly min;
     @Prop({type:Number,default:9999}) readonly max;
+    @Prop({type:String,default:'normal'}) readonly type; // 样式类型：normal, simple
 
     private inputValue: number = 1;
 
@@ -57,33 +58,5 @@ export default class Stepper extends Vue {
 </script>
     
 <style lang="less" scoped>
-.stepper-wrapper {
-    display: inline-block;
 
-    .stepper-reduce, .stepper-add {
-        display: inline-block;
-        width: 0.56rem;
-        height: 0.56rem;
-        border-radius: 2px;
-        text-align: center;
-        line-height: 0.56rem;
-        background: #F2F2F2;
-
-        .icon {
-            font-size: 0.24rem;
-            color: #666;
-            font-weight: bold;
-        }
-    }
-
-    .stepper-input {
-        width: 1.5rem;
-        height: 0.56rem;
-        border: none;
-        background: #F2F2F2;
-        border-radius: 4px;
-        text-align: center;
-        // margin: 0 0.1rem;
-    }
-}
 </style>

@@ -35,29 +35,5 @@ export default class Tabbar extends Vue {
 </script>
     
 <style lang="less" scoped>
-.tabbar-wrapper {
-    width: 100%;
-    height: 1rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    border-top: 1px solid #eee;
-    font-size: 14px;
-    
-    line-height: 1.5;
-    background: #fff;
 
-    .tabbar-item {
-        flex: 1;
-        text-align: center;
-        color: #666;
-    }
-    .tabbar-act {
-        color: #539BED;
-    }
-    .tabbar-img {
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-}
 </style>

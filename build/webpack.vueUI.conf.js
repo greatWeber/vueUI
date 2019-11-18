@@ -91,6 +91,11 @@ module.exports = {
         }),
       },
       {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use:['style-loader','css-loader']
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -99,7 +104,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(ttf)(\?.*)?$/,
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
