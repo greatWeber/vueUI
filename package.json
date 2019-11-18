@@ -1,8 +1,17 @@
 {
-  "name": "vueui",
-  "version": "1.0.0",
+  "name": "@hero_666/web_vueui",
+  "version": "1.0.1",
   "description": "the UI library of vue",
-  "main": "index.js",
+  "main": "dist/vueUI.js",
+  "module":"dist/vueUI.js",
+  "typings":"src/index.ts",
+  "files": [
+    "dist/**",
+    "src/*.ts"
+  ],
+  "keywords":[
+    "vueUI"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build:ex": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.prod.conf.js",
@@ -15,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/greatWeber/vueUI.git"
   },
-  "author": "greatWeber",
+  "author": "hero_666",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/greatWeber/vueUI/issues"

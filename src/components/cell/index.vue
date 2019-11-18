@@ -28,7 +28,11 @@ export default class Cell extends Vue {
     private jumpHandler():void {
         if (!this.to)return;
         setTimeout(()=>{
-            (this as any).$router.push(this.to);
+            try {
+                (this as any).$router.push(this.to);
+            } catch (error) {
+                console.error(error);
+            }
         },200)
     }
 }

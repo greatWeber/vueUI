@@ -68,9 +68,10 @@ const components ={
     cellG,
 };
 
-const version = '1.0.0';
+const version = '1.0.1';
 const install = (Vue,config={})=>{
     Vue.prototype.vueUIConfig = config;
+    
     if ((install as any).installed)return;
     for(let k in components){
         let name = k.slice(0,1).toLowerCase()+k.slice(1).replace(/\B([A-Z])/g, '-$1').toLowerCase();
@@ -78,13 +79,13 @@ const install = (Vue,config={})=>{
     }
 };
 
-// 全局方法调用
 Vue.prototype.$loading = Loading;
 Vue.prototype.$toast = Toast;
 Vue.prototype.$modal = Modal;
 Vue.prototype.$preview = Preview.instance;
 
 Preview.preview();
+console.log('vue',Vue);
 
 const vueUI = {
     install,

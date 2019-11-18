@@ -124,7 +124,7 @@ module.exports = {
   // devtool: '#source-map',
   plugins,
   externals:{
-    vue:'Vue'
+    vue:'vue'
   },
   optimization:{
     minimizer:[
