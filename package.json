@@ -3,14 +3,14 @@
   "version": "1.0.2",
   "description": "the UI library of vue",
   "main": "dist/vueUI.js",
-  "module":"dist/vueUI.js",
-  "typings":"src/index.ts",
+  "module": "dist/vueUI.js",
+  "typings": "src/index.ts",
   "files": [
     "dist/vueUI.js",
     "dist/vueUI.css",
     "src/*.ts"
   ],
-  "keywords":[
+  "keywords": [
     "vueUI"
   ],
   "scripts": {
@@ -19,7 +19,8 @@
     "start": "npm run dev",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.vueUI.conf.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "docs:copy": "node build/buildDocs.js"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^2.0.1",
+    "copy-dir": "^1.2.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^6.0.0",
     "css-loader": "^0.28.11",
