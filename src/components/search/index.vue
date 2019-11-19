@@ -1,7 +1,7 @@
 <template>
 <section style="overflow:hidden;">
 <div class="search-wrapper flex">
-    <div :class="type=='round'?'search-round':''" class="search-content" >
+    <div :class="round?'search-round':''" class="search-content" >
         <span class="icon icon-search"></span>
         <input type="text" class="search-input" :placeholder="placeholder" v-model="searchKey" @change="changeHandler">
         <span class="cancel icon icon-error" v-show="searchKey" @click="cancelHandler"></span>
@@ -20,7 +20,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 export default class Search extends Vue {
     @Prop(String) readonly value;
     @Prop({type:String,default:'请输入关键字'}) readonly placeholder;
-    @Prop(String) readonly type; // round(圆角)
+    @Prop(Boolean) readonly round; // round(圆角)
 
     private searchKey :string = '';
 

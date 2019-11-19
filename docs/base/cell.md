@@ -3,25 +3,28 @@
 
 ## 基本用法
 ```html
-<vueUI-cell title="这是列表项"></vueUI-cell>
+<vu-cell title="这是列表项"></vu-cell>
 ```
 
 ## 显示箭头和右边的值
 ```html
-<vueUI-cell title="这是列表项" value="1" :arrow="true"></vueUI-cell>
+<vu-cell title="这是列表项" value="1" :arrow="true"></vu-cell>
 ```
 
 ## 左边显示图标(图片)
 > 图标的类型有: icon / img
 ```html
-<vueUI-cell title="这是列表项" value="1" :arrow="true" icon="icon-success" iconType="icon"></vueUI-cell>
+<vu-cell title="这是列表项" value="1" :arrow="true" icon="icon-success" iconType="icon"></vu-cell>
 ```
 
 ## 点击跳转
 > 写法跟`vue-router`的:to方法一样。
 ```html
-<vueUI-cell title="标题跳转" :arrow="true" value="good" :to="{name:'button'}"></vueUI-cell>
+<vu-cell title="标题跳转" :arrow="true" value="good" :to="{name:'button'}"></vu-cell>
 ```
+::: danger 注意
+页面跳转需要`vue-router`配合使用
+:::
 
 ## 参数
 | 参数     | 说明                                       | 类型    | 可选值   | 默认值 |

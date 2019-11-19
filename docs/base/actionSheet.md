@@ -5,8 +5,8 @@
 ```vue
 <template>
 <div>
-    <vueUI-button class="btn" size="medium" round @click="showSheet=true;">actionsheet</vueUI-button>
-    <vueUI-actionsheet :menu="menus" v-model="showSheet"></vueUI-actionsheet>
+    <vu-button class="btn" size="medium" round @click="showSheet=true;">actionsheet</vu-button>
+    <vu-actionsheet :menu="menus" v-model="showSheet"></vu-actionsheet>
 </div>
 </template>
     

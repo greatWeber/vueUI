@@ -9,7 +9,7 @@
 ```vue
 <template>
 <div>
-    <vueUI-popup :showPopup.sync="showPopup" position="right"></vueUI-popup>
+    <vu-popup :showPopup.sync="showPopup" position="right"></vu-popup>
 </div>
 </template>
     

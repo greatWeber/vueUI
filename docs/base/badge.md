@@ -3,13 +3,13 @@
 
 ## 基本用法
 ```html
-<vueUI-badge>badge小红点</vueUI-badge>
+<vu-badge>badge小红点</vu-badge>
 ```
 
 ## 显示数字
 > 当数字大于99, 转成`...`。
 ```html
-<vueUI-badge type="number" num="99">badge小红点</vueUI-badge>
+<vu-badge type="number" num="99">badge小红点</vu-badge>
 ```
 
 ## 参数

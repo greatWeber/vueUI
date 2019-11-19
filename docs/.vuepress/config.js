@@ -24,9 +24,42 @@ module.exports = {
                     '/base/cell',
                     '/base/tab',
                     '/base/actionSheet',
-                    '/base/swiper',
-                    '/base/loadmore',
                     '/base/popup',
+                    '/base/search',
+                    '/base/tabbar',
+                ]
+            },
+            {
+                title:'表单组件',
+                collapsable:false,
+                children:[
+                    '/form/picker',
+                    '/form/input',
+                    '/form/radio',
+                    '/form/checkbox',
+                    '/form/uploader',
+                    '/form/switch',
+                    '/form/stepper',
+                    '/form/form',
+                ]
+            },
+            {
+                title:'js调用',
+                collapsable:false,
+                children:[
+                    '/js/loading',
+                    '/js/toast',
+                    '/js/model'
+                ]
+            },
+            {
+                title:'高级组件',
+                collapsable:false,
+                children:[
+                    '/high/swiper',
+                    '/high/loadmore',
+                    '/high/preview',
+                    '/high/steps',
                 ]
             }
         ]

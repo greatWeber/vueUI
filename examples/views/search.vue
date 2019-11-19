@@ -1,7 +1,7 @@
 <template>
 <div>
     <vu-search v-model="key" @search="searchHandler" @clear="clearHandler"></vu-search>
-    <vu-search type="round"></vu-search>
+    <vu-search :round="true"></vu-search>
 </div>
 </template>
     

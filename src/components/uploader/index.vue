@@ -1,7 +1,7 @@
 <template>
 <div class="vueUI-uploader">
     <label class="vueUI-uploader-label">
-        <input class="vueUI-uploader-input" type="file" :value="fileValue" :accept="accept" @change="changeHandler">
+        <input class="vueUI-uploader-input" type="file" :value="fileValue" :accept="'image/'+accept" @change="changeHandler">
         <span class="icon icon-increase"></span>
     </label>
     <div class="vueUI-uploader-img" v-for="(img,i) in imgList" :key="i">
@@ -27,7 +27,7 @@ import emitter from '@/mixins/emit';
 })
 export default class Uploader extends Vue {
     @Prop(Array) readonly value;
-    @Prop({type:String,default:'image/*'}) readonly accept;
+    @Prop({type:String,default:'*'}) readonly accept;
     @Prop({type:Number,default:5}) readonly limit;
 
     private imgList: Array<string> = [];

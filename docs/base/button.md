@@ -3,40 +3,40 @@
 
 ## 基本用法
 ```html
-<vueUI-button>基本按钮</vueUI-button>
+<vu-button>基本按钮</vu-button>
 ```
 
 ## 不同尺寸
 > size: mini, small, medium。默认是 mini。
 ```html
-<vueUI-button  size="mini">mini按钮</vueUI-button>
-<vueUI-button  size="small">small按钮</vueUI-button>
-<vueUI-button  size="medium">medium按钮</vueUI-button>
+<vu-button  size="mini">mini按钮</vu-button>
+<vu-button  size="small">small按钮</vu-button>
+<vu-button  size="medium">medium按钮</vu-button>
 ```
 
 ## 不同类型
 > type: primary, success, info, warning, danger。默认是空白背景。
 ```html
-<vueUI-button  type="primary">primary按钮</vueUI-button>
-<vueUI-button  type="success">success按钮</vueUI-button>
-<vueUI-button  type="info">info按钮</vueUI-button>
-<vueUI-button  type="warning">warning按钮</vueUI-button>
-<vueUI-button  type="danger">danger按钮</vueUI-button>
+<vu-button  type="primary">primary按钮</vu-button>
+<vu-button  type="success">success按钮</vu-button>
+<vu-button  type="info">info按钮</vu-button>
+<vu-button  type="warning">warning按钮</vu-button>
+<vu-button  type="danger">danger按钮</vu-button>
 ```
 
 ## 椭圆按钮
 ```html
-<vueUI-button round="true">椭圆按钮</vueUI-button>
+<vu-button round="true">椭圆按钮</vu-button>
 ```
 
 ## 带加载动画的按钮
 ```html
-<vueUI-button loading="true">椭圆按钮</vueUI-button>
+<vu-button loading="true">椭圆按钮</vu-button>
 ```
 
 ## 朴素按钮
 ```html
-<vueUI-button plain="true">朴素按钮</vueUI-button>
+<vu-button plain="true">朴素按钮</vu-button>
 ```
 
 ## 参数

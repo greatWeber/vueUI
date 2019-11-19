@@ -7,7 +7,7 @@
 :::
 ```vue
 <template>
-    <vueUI-tab :tabs="tabs" @tab-click="clickHandler"></vueUI-tab>
+    <vu-tab :tabs="tabs" @tab-click="clickHandler"></vu-tab>
 </template>
     
 <script lang="ts">
@@ -36,14 +36,14 @@ export default class Tab extends Vue {
 > 当标签数组是对象数组时，可以通过`tabKey`指定key值
 
 ```vue
-<vueUI-tab :tabs="tabs" tabKey="title" @tab-click="clickHandler"></vueUI-tab>
+<vu-tab :tabs="tabs" tabKey="title" @tab-click="clickHandler"></vu-tab>
 ```
 
 ## 指定当前高亮的标签
 > 可以通过`tabIndex`来指定当前第几个标签高亮
 
 ```vue
-<vueUI-tab :tabs="tabs" tabKey="title" tabIndex="1" @tab-click="clickHandler"></vueUI-tab>
+<vu-tab :tabs="tabs" tabKey="title" tabIndex="1" @tab-click="clickHandler"></vu-tab>
 ```
 ## 参数
 | 参数     | 说明            | 类型   | 可选值 | 默认值 |
