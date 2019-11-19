@@ -68,7 +68,7 @@ const components ={
     cellG,
 };
 
-const version = '1.0.2';
+const version = '1.0.3';
 const install = (Vue,config={})=>{
     Vue.prototype.vueUIConfig = config;
     

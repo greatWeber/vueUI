@@ -23,4 +23,4 @@ Vue.use(vueUI,{
 ## more
 [you can see the more example for here](https://greatweber.github.io/vueUI/dist/#/)
 
-[the description document(chinese)]()
+[the description document(chinese)](https://greatweber.github.io/vueUI/dist/docs/)

@@ -1,6 +1,6 @@
 {
   "name": "@hero_666/web_vueui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "the UI library of vue",
   "main": "dist/vueUI.js",
   "module": "dist/vueUI.js",
