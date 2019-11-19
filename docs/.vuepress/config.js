@@ -1,7 +1,7 @@
 module.exports = {
     title: 'vueUI',
     description: 'vueUI 说明文档',
-    base:'vueUI/dist/docs/',
+    base:'https://greatweber.github.io/vueUI/dist/docs/',
     themeConfig:{
         nav: [
             {text:'主页',link:'/'},
