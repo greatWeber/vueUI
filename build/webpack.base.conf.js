@@ -37,7 +37,12 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: Object.assign(vueLoaderConfig,{
+          loaders:{
+            ts: 'ts-loader',
+            tsx: 'babel-loader!ts-loader'
+          }
+        })
       },
       {
         test: /\.js$/,
@@ -51,11 +56,14 @@ module.exports = {
       // },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
         exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-        }
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: { appendTsxSuffixTo: [/\.vue$/] }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

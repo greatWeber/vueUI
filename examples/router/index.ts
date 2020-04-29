@@ -150,6 +150,12 @@ const router = new Router({
             name:'steps',
             meta:{title:'步骤',groupZh:'高阶',groupEn:'high'},
             component: ()=>import('@ex/views/steps.vue') 
+        },
+        {
+            path:'/swiperTabs',
+            name:'swiperTabs',
+            meta:{title:'滑动tabs',groupZh:'高阶',groupEn:'high'},
+            component: ()=>import('@ex/views/swiperTabs.vue') 
         }
     ]
 });

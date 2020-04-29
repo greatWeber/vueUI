@@ -30,6 +30,8 @@ import tabbar from './components/tabbar/index.vue';
 import steps from './components/steps/index.vue';
 import cellG from './components/cellG/index.vue';
 
+import swiperTabs from './components/swiperTabs/index.vue';
+
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
 import Modal from './components/modal/index';
@@ -66,6 +68,8 @@ const components ={
     tabbar,
     steps,
     cellG,
+
+    swiperTabs,
 };
 
 const version = '1.0.3';
@@ -75,6 +79,7 @@ const install = (Vue,config={})=>{
     if ((install as any).installed)return;
     for(let k in components){
         let name = k.slice(0,1).toLowerCase()+k.slice(1).replace(/\B([A-Z])/g, '-$1').toLowerCase();
+        console.log(name);
         Vue.component('vu-'+name,components[k]);
     }
 };

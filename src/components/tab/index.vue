@@ -6,7 +6,7 @@
         :class="[TabIndex==i?'vueUI-tab-active':'']" 
         @click="clickHandler(i)"
         v-for="(item,i) in tabs" :key="i">
-            {{item[tabKey]}}</li>
+            {{tabKey?item[tabKey]:item}}</li>
     </ul>
     <div class="vueUI-tab-content" v-else>
         <ul class="vueUI-tab-more flex " >
@@ -16,7 +16,7 @@
             :class="[TabIndex==i?'vueUI-tab-active':'']" 
             @click="clickHandler(i)"
             v-for="(item,i) in tabs" :key="i">
-                {{item[tabKey]}}</li>
+                {{tabKey?item[tabKey]:item}}</li>
         </ul>
         <p class="vueUI-tab-btn" @click="openFlag=!openFlag">
             <span class="icon icon-down"></span>

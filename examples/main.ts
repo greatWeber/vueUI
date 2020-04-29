@@ -2,10 +2,10 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/index';
 import Router from 'vue-router';
-import vueUI from '../dist/vueUI.js';
-// const vueUI = require('../dist/vueUI.js');
-// import '../dist/vueUI.css';
-require('../dist/vueUI.css');
+
+import vueUI from '@/index';
+// import vueUI from '../dist/vueUI.js';
+// require('../dist/vueUI.css');
 console.log(vueUI);
 
 Vue.config.productionTip = false;
