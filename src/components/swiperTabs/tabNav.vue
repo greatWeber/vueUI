@@ -15,5 +15,14 @@ export default class TabNav extends Vue {
     
     private tabs: Array<any> = [];
 
+
+    @Watch('panes',{immediate:true})
+    panesWatch(val:Array<any>, oldVal:Array<any>){
+        let rs = [];
+        val.map(m=>rs.push(m.label));
+        tabs = 
+    }
+
+
 }
 </script>
