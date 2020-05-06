@@ -9,9 +9,22 @@ import tab from '../tab/index.vue';
     components:{
         tab
     },
+    render(h:CreateElement){
+        let {
+            tabs,
+            tabIndex,
+        } = this;
+        return (
+            <tab
+                tabs={tabs}
+                tabIndex={tabIndex}
+            ></tab>
+        )
+    }
 })
 export default class TabNav extends Vue {
-    @Prop({type:Array,default:[]}) panes;
+    @Prop({type:Array,default:[]}) panes: Array<any>;
+    @Prop({type:[String,Number],default:0}) tabIndex: String|Number;
     
     private tabs: Array<any> = [];
 
@@ -20,7 +33,7 @@ export default class TabNav extends Vue {
     panesWatch(val:Array<any>, oldVal:Array<any>){
         let rs = [];
         val.map(m=>rs.push(m.label));
-        tabs = 
+        this.tabs = rs;
     }
 
 
