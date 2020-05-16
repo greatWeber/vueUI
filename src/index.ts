@@ -31,6 +31,7 @@ import steps from './components/steps/index.vue';
 import cellG from './components/cellG/index.vue';
 
 import swiperTabs from './components/swiperTabs/index.vue';
+import tabPane from './components/swiperTabs/tabPane.vue';
 
 import Loading from './components/loading/index';
 import Toast from './components/toast/index';
@@ -70,6 +71,7 @@ const components ={
     cellG,
 
     swiperTabs,
+    tabPane,
 };
 
 const version = '1.0.3';
@@ -79,7 +81,7 @@ const install = (Vue,config={})=>{
     if ((install as any).installed)return;
     for(let k in components){
         let name = k.slice(0,1).toLowerCase()+k.slice(1).replace(/\B([A-Z])/g, '-$1').toLowerCase();
-        console.log(name);
+        // console.log(name);
         Vue.component('vu-'+name,components[k]);
     }
 };
@@ -90,7 +92,7 @@ Vue.prototype.$modal = Modal;
 Vue.prototype.$preview = Preview.instance;
 
 Preview.preview();
-console.log('vue',Vue);
+// console.log('vue',Vue);
 
 const vueUI = {
     install,

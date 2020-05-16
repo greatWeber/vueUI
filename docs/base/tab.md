@@ -24,7 +24,7 @@ export default class Tab extends Vue {
     ];
 
     private clickHandler(data:Object){
-        console.log(data);
+        console.log(data); //{index:i,value:string}
     }
 }
 

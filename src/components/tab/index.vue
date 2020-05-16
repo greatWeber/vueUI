@@ -57,7 +57,10 @@ export default class Tab extends Vue {
     private clickHandler(i:number){
         this.TabIndex = i;
         this.$emit('update:tabIndex',i);
-        this.$emit('tab-click',this.tabs[i])
+        this.$emit('tab-click',{
+            index:i,
+            value:this.tabs[i]
+        })
     }
 }
 </script>

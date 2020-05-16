@@ -3,7 +3,7 @@
     class="vueUI-tab-pane"
     v-if="loaded"
     v-show="active"
-    :id="`pane-${name}`">
+    :id="`pane-${label}`">
     <slot></slot>
 </div>
 </template>
@@ -12,14 +12,18 @@
 import { Component, Vue, Prop, Watch ,Emit} from 'vue-property-decorator';
 import { CreateElement} from 'vue';
 
-Component({
+@Component({
     name:'TabPane',
     computed:{
         active(){
-            const active :Boolean = this.$parent.currentName === this.name;
+            //console.log('currentName',this.$parent)
+            const active :Boolean = this.$parent.currentName === this.label;
             if(active) this.loaded = true;
             return active;
         }
+    },
+    mounted(){
+        
     },
     updated(){
         this.$parent.$emit('tab-nav-update');
@@ -27,10 +31,15 @@ Component({
 
 })
 export default class TabPane extends Vue {
-    @Prop({type:String,default:''}) name: String;
+    // @Prop({type:String,default:''}) name: String;
     @Prop({type:String,default:''}) label: String;
 
-    private loaded: Boolean = false; 
+    private loaded: Boolean = false;
+    
+    @Watch('this.$parent.currentName',{immediate:true,deep:true})
+    currentNameWatcher(val:String){
+        console.log('currentName',val);
+    }
 
 }
 </script>
